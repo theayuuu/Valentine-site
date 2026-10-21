@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Do You Love Me? 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -30,17 +30,17 @@
             overflow: hidden;
         }
 
-        /* Top Centered Sticker */
+        /* Top Centered New Sticker */
         .top-sticker {
             display: block;
             margin: 0 auto 20px auto;
-            width: 220px;
+            width: 180px;
             height: auto;
         }
 
         .container {
             text-align: center;
-            max-width: 400px;
+            max-width: 420px; /* Increased Width */
             width: 100%;
         }
 
@@ -49,17 +49,20 @@
             background: rgba(128, 15, 48, 0.88);
             backdrop-filter: blur(8px);
             border-radius: 20px;
-            padding: 30px 24px;
+            padding: 35px 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        /* Minimal Font with slightly increased size */
         h2 {
-            font-family: 'Sacramento', cursive;
-            font-size: 38px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 24px;
             color: #fff;
             margin-bottom: 25px;
-            line-height: 1.2;
+            line-height: 1.4;
+            letter-spacing: 0.3px;
         }
 
         /* Buttons Container */
@@ -103,8 +106,8 @@
 <body>
 
     <div class="container" id="mainContainer">
-        <!-- Sticker -->
-        <img src="sticker.jpg" alt="Sticker" class="top-sticker">
+        <!-- New Sticker Image -->
+        <img src="sticker2.jpg" alt="Sticker" class="top-sticker">
 
         <!-- Dark Box -->
         <div class="card">
@@ -144,7 +147,7 @@
         function sayYes() {
             const container = document.getElementById('mainContainer');
             container.innerHTML = `
-                <img src="sticker.jpg" alt="Love" class="top-sticker" style="width: 220px;">
+                <img src="sticker2.jpg" alt="Love" class="top-sticker" style="width: 180px;">
                 <div class="card">
                     <h2>I knew it! 🥰💖</h2>
                     <p style="font-size: 18px; margin-top: 10px; color: #ffe6eb;">Love you too babiee! Happy Valentine's Day! 💋✨</p>
