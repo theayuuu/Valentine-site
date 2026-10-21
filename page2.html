@@ -26,7 +26,6 @@
             background-size: 40px 40px;
             padding: 20px;
             color: #fff;
-            overflow: hidden;
         }
 
         .top-sticker {
@@ -49,7 +48,6 @@
             padding: 35px 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
         }
 
         h2 {
@@ -77,14 +75,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            margin-top: 10px;
-            position: relative;
-            min-height: 55px;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 12px 25px;
             font-size: 18px;
             font-weight: 600;
             border-radius: 8px;
@@ -92,7 +89,7 @@
             cursor: pointer;
             text-decoration: none;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            display: inline-block;
+            transition: all 0.3s ease;
         }
 
         .btn-yes {
@@ -100,17 +97,9 @@
             color: white;
         }
 
-        .btn-yes:active {
-            transform: scale(0.95);
-        }
-
         .btn-no {
             background-color: #c2185b;
             color: white;
-            position: relative;
-            transition: transform 0.15s ease-out;
-            touch-action: none;
-            user-select: none;
         }
 
         .btn-surprise {
@@ -120,43 +109,56 @@
             padding: 12px 20px;
             margin-top: 15px;
             border-radius: 10px;
-            line-height: 1.3;
-        }
-
-        .btn-surprise:active {
-            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
 
     <div class="container" id="mainContainer">
-        <img src="sticker2.jpg" alt="Sticker" class="top-sticker">
+        <img src="sticker2.jpg" alt="Sticker" class="top_sticker">
 
         <div class="card">
             <h2>First tell me do you love me?</h2>
             
             <div class="btn-container">
-                <button class="btn btn-yes" onclick="sayYes()">Yes</button>
-                <button class="btn btn-no" id="noBtn">No</button>
+                <button class="btn btn-yes" id="yesBtn" onclick="sayYes()">Yes</button>
+                <button class="btn btn-no" id="noBtn" onclick="handleNoClick()">No</button>
             </div>
         </div>
     </div>
 
     <script>
-        const noBtn = document.getElementById('noBtn');
+        const noMessages = [
+            "No",
+            "Are you sure? 🥺",
+            "Really??",
+            "Think again! 💭",
+            "Pretty please, bubu? 💕",
+            "Dil todoge kya? 💔",
+            "Man jao na 👉👈 khutur babiee! 😭"
+        ];
 
-        function moveBtn(e) {
-            if (e) e.preventDefault();
-            // Perfectly bounds the random dodge movement inside the viewport
-            const x = (Math.random() - 0.5) * (window.innerWidth > 350 ? 220 : 150);
-            const y = (Math.random() - 0.5) * 120;
-            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        let noClickCount = 0;
+        let yesScale = 1;
+        let noScale = 1;
+
+        function handleNoClick() {
+            noClickCount++;
+            
+            // Change "No" button text step by step
+            const messageIndex = Math.min(noClickCount, noMessages.length - 1);
+            document.getElementById('noBtn').innerText = noMessages[messageIndex];
+
+            // Make "Yes" button bigger smoothly
+            yesScale += 0.25;
+            document.getElementById('yesBtn').style.transform = `scale(${yesScale})`;
+
+            // Make "No" button smaller gradually
+            if (noScale > 0.4) {
+                noScale -= 0.1;
+                document.getElementById('noBtn').style.transform = `scale(${noScale})`;
+            }
         }
-
-        noBtn.addEventListener('mouseover', moveBtn);
-        noBtn.addEventListener('touchstart', moveBtn);
-        noBtn.addEventListener('click', moveBtn);
 
         function sayYes() {
             const container = document.getElementById('mainContainer');
