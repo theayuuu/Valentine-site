@@ -30,7 +30,7 @@
             overflow: hidden;
         }
 
-        /* Top Centered New Sticker */
+        /* Top Centered Sticker */
         .top-sticker {
             display: block;
             margin: 0 auto 20px auto;
@@ -40,7 +40,7 @@
 
         .container {
             text-align: center;
-            max-width: 420px; /* Increased Width */
+            max-width: 420px;
             width: 100%;
         }
 
@@ -54,7 +54,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Minimal Font with slightly increased size */
+        /* Minimal Font with increased size */
         h2 {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -63,6 +63,19 @@
             margin-bottom: 25px;
             line-height: 1.4;
             letter-spacing: 0.3px;
+        }
+
+        /* Rectangular Frame with Border for Success GIF */
+        .gif-frame {
+            width: 100%;
+            max-width: 260px;
+            height: auto;
+            margin: 0 auto 20px auto;
+            border-radius: 16px;
+            border: 3px solid #800f30;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            display: block;
+            background: #fff;
         }
 
         /* Buttons Container */
@@ -147,10 +160,9 @@
         function sayYes() {
             const container = document.getElementById('mainContainer');
             container.innerHTML = `
-                <img src="sticker2.jpg" alt="Love" class="top-sticker" style="width: 180px;">
                 <div class="card">
-                    <h2>I knew it! 🥰💖</h2>
-                    <p style="font-size: 18px; margin-top: 10px; color: #ffe6eb;">Love you too babiee! Happy Valentine's Day! 💋✨</p>
+                    <img src="Love1.gif" alt="Cute GIF" class="gif-frame">
+                    <h2>I knew it my khuchupuchu, I love you tooo&lt;3</h2>
                 </div>
             `;
         }
