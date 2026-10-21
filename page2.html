@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me? 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Pink Gingham Grid Pattern Background */
+            background-color: #ffd6e0;
+            background-image: 
+                linear-gradient(90deg, rgba(255, 154, 178, 0.45) 50%, transparent 50%),
+                linear-gradient(rgba(255, 154, 178, 0.45) 50%, transparent 50%);
+            background-size: 40px 40px;
+            padding: 20px;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Top Centered Sticker */
+        .top-sticker {
+            display: block;
+            margin: 0 auto 20px auto;
+            width: 220px;
+            height: auto;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Dark Card / Box */
+        .card {
+            background: rgba(128, 15, 48, 0.88);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 30px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h2 {
+            font-family: 'Sacramento', cursive;
+            font-size: 38px;
+            color: #fff;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        /* Buttons Container */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95);
+        }
+
+        .btn-no {
+            background-color: #c2185b;
+            color: white;
+            touch-action: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <!-- Sticker -->
+        <img src="sticker.jpg" alt="Sticker" class="top-sticker">
+
+        <!-- Dark Box -->
+        <div class="card">
+            <h2>First tell me do you love me?</h2>
+            
+            <div class="btn-container">
+                <button class="btn btn-yes" onclick="sayYes()">Yes</button>
+                <button class="btn btn-no" id="noBtn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+
+        // Dodging No Button Animation
+        function dodgeButton() {
+            const padding = 20;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        noBtn.addEventListener('mouseover', dodgeButton);
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            dodgeButton();
+        });
+
+        // When Yes is Clicked
+        function sayYes() {
+            const container = document.getElementById('mainContainer');
+            container.innerHTML = `
+                <img src="sticker.jpg" alt="Love" class="top-sticker" style="width: 220px;">
+                <div class="card">
+                    <h2>I knew it! 🥰💖</h2>
+                    <p style="font-size: 18px; margin-top: 10px; color: #ffe6eb;">Love you too babiee! Happy Valentine's Day! 💋✨</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
