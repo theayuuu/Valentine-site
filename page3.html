@@ -1,0 +1,125 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jukebox - Some songs that remind me of you ♥️</title> <!-- Document Title -->
+    
+    <!-- Tailwind CSS CDN for smooth layout styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Meddon for aesthetic cursive heading & Poppins for buttons/text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Meddon&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Font Definitions */
+        .font-meddon {
+            font-family: 'Meddon', cursive;
+        }
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* 
+           Background Setup:
+           Uses a repeating SVG pattern mimicking soft pink vertical stripes 
+           interspersed with tiny hand-drawn red hearts.
+        */
+        body {
+            background-color: #fdf0f4;
+            background-image: radial-gradient(circle at center, rgba(230, 80, 115, 0.18) 0%, rgba(253, 240, 244, 0.95) 75%),
+                url("data:image/svg+xml,%3Csvg width='60' height='120' viewBox='0 0 60 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='60' height='120' patternUnits='userSpaceOnUse'%3E%3Cpath d='M10 0 v120 M30 0 v120 M50 0 v120' stroke='%23f9dbe4' stroke-width='4' fill='none'/%3E%3Cpath d='M20 0 v120 M40 0 v120' stroke='%23fce8ef' stroke-width='2' fill='none'/%3E%3C!-- Tiny Hearts --%3E%3Cpath d='M10 20 C10 17 6 15 6 18 C6 21 10 23 10 25 C10 23 14 21 14 18 C14 15 10 17 10 20 Z' fill='%23d92b4b' scale='0.8'/%3E%3Cpath d='M50 50 C50 47 46 45 46 48 C46 51 50 53 50 55 C50 53 54 51 54 48 C54 45 50 47 50 50 Z' fill='%23d92b4b' scale='0.8'/%3E%3Cpath d='M30 85 C30 82 26 80 26 83 C26 86 30 88 30 90 C30 88 34 86 34 83 C34 80 30 82 30 85 Z' fill='%23d92b4b' scale='0.8'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
+
+        /* Subtle glowing aura effect in the center */
+        .aura-glow {
+            box-shadow: 0 0 50px 15px rgba(217, 43, 75, 0.15);
+        }
+
+        /* Custom Maroon Theme Button Color */
+        .bg-maroon {
+            background-color: #800f30;
+        }
+
+        .hover\:bg-maroon-dark:hover {
+            background-color: #610922;
+        }
+
+        /* Smooth spring-like press transition */
+        .btn-bounce {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .btn-bounce:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(128, 15, 48, 0.35);
+        }
+
+        .btn-bounce:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 4px 10px -2px rgba(128, 15, 48, 0.2);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6 font-poppins selection:bg-pink-200 selection:text-maroon">
+
+    <!-- Central Aesthetic Card Container -->
+    <main class="w-full max-w-md bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl border border-pink-100 aura-glow flex flex-col items-center text-center relative overflow-hidden">
+        
+        <!-- Decorative Header Icon / Vinyl Aesthetic -->
+        <div class="w-16 h-16 sm:w-20 sm:h-20 mb-4 rounded-full bg-pink-100 flex items-center justify-center border-2 border-pink-200 shadow-inner relative">
+            <span class="text-2xl sm:text-3xl animate-pulse">🎵</span>
+            <div class="absolute inset-0 rounded-full border border-dashed border-red-300 animate-[spin_10s_linear_infinite] opacity-60"></div>
+        </div>
+
+        <!-- Cursive Romantic Heading in 'Meddon' Font -->
+        <h1 class="font-meddon text-xl sm:text-2xl md:text-3xl text-gray-800 leading-relaxed mb-8 px-2">
+            Some songs that remind me of you ♥️
+        </h1>
+
+        <!-- Song Navigation Buttons Container -->
+        <div class="w-full space-y-4 mb-8">
+            
+            <!-- Song 1 Link Button -->
+            <a href="song1.html" 
+               class="btn-bounce w-full block bg-maroon text-white font-medium text-lg py-4 px-6 rounded-2xl shadow-md text-center tracking-wide border border-red-900/10">
+               Song 1
+            </a>
+
+            <!-- Song 2 Link Button -->
+            <a href="song2.html" 
+               class="btn-bounce w-full block bg-maroon text-white font-medium text-lg py-4 px-6 rounded-2xl shadow-md text-center tracking-wide border border-red-900/10">
+               Song 2
+            </a>
+
+        </div>
+
+        <!-- Divider Line with Heart Accent -->
+        <div class="w-full flex items-center justify-center space-x-3 mb-8 opacity-60">
+            <div class="h-[1px] bg-red-300 flex-1"></div>
+            <span class="text-xs text-red-400">✨</span>
+            <div class="h-[1px] bg-red-300 flex-1"></div>
+        </div>
+
+        <!-- Next Page / Surprise Navigation Button -->
+        <a href="page4.html" 
+           class="btn-bounce w-full block bg-maroon text-white font-medium text-base py-3.5 px-6 rounded-full shadow-lg text-center border border-red-900/20 flex items-center justify-center space-x-2">
+           <span>Next surprise</span>
+           <span class="text-lg">🙈</span>
+        </a>
+
+        <!-- Footer Subtle Tagline -->
+        <p class="text-xs text-pink-400 mt-6 font-light tracking-wider uppercase">
+            Made with love • Jukebox
+        </p>
+
+    </main>
+
+</body>
+</html>
+```
