@@ -39,7 +39,7 @@
             text-align: center;
         }
 
-        /* Top Sticker with Maroon Outline */
+        /* Top Sticker with Maroon Border */
         .top-sticker {
             width: 110px;
             height: auto;
@@ -55,24 +55,24 @@
             font-size: 14px;
             font-weight: 500;
             color: #800f30;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             line-height: 1.4;
             letter-spacing: 0.2px;
         }
 
-        /* Hint Button ABOVE Passcode Area (Initially Hidden) */
+        /* Bolder & Bigger Hint Button ABOVE Passcode Area */
         .hint-btn {
             display: none;
             background-color: #ffffff;
             color: #800f30;
-            border: 1.5px solid #800f30;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
+            border: 2px solid #800f30;
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
             cursor: pointer;
             margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(128, 15, 48, 0.15);
+            box-shadow: 0 3px 10px rgba(128, 15, 48, 0.18);
             transition: all 0.2s ease;
         }
 
@@ -97,8 +97,8 @@
         }
 
         .pin-box {
-            width: 45px;
-            height: 50px;
+            width: 48px;
+            height: 52px;
             background-color: #ffffff;
             border: 2px solid #800f30;
             border-radius: 12px;
@@ -111,18 +111,18 @@
             box-shadow: 0 2px 8px rgba(128, 15, 48, 0.15);
         }
 
-        /* Try Again Button (Replaces boxes on wrong passcode) */
+        /* Bigger & Prominent Try Again Button */
         .try-again-btn {
             display: none;
             background-color: #800f30;
             color: #ffffff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 500;
+            padding: 10px 24px;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(128, 15, 48, 0.25);
+            box-shadow: 0 4px 14px rgba(128, 15, 48, 0.3);
             transition: all 0.2s ease;
         }
 
@@ -133,8 +133,8 @@
 
         .error-message {
             color: #d90429;
-            font-size: 12px;
-            height: 18px;
+            font-size: 13px;
+            height: 20px;
             margin-bottom: 8px;
             font-weight: 500;
         }
@@ -210,7 +210,7 @@
             <button class="try-again-btn" id="tryAgainBtn" onclick="resetForTryAgain()">Try again 🙈</button>
         </div>
 
-        <!-- Error / Success Message -->
+        <!-- Error / Success / Hint Message -->
         <div class="error-message" id="errorMsg"></div>
 
         <!-- Keypad -->
@@ -281,18 +281,18 @@
                 document.getElementById('errorMsg').innerText = "Wrong passcode!";
 
                 if (wrongAttempts >= 3) {
-                    // 3rd attempt and onwards: Show Hint button on top
+                    // 3rd attempt onwards: Show Hint button on top
                     document.getElementById('hintBtn').style.display = "inline-block";
                     document.getElementById('tryAgainBtn').style.display = "none";
                 } else {
-                    // 1st and 2nd attempt: Show Try Again button
+                    // 1st & 2nd attempt: Show Try Again button
                     document.getElementById('tryAgainBtn').style.display = "block";
                 }
             }
         }
 
         function showHint() {
-            // Display Hint Text in Error Message box
+            // Display Hint Text
             document.getElementById('errorMsg').style.color = "#800f30";
             document.getElementById('errorMsg').innerText = "Putur's birthday 🎂";
 
@@ -306,7 +306,10 @@
         function resetForTryAgain() {
             currentInput = "";
             updateBoxes();
+            
+            // Clear the "Putur's birthday 🎂" message completely
             document.getElementById('errorMsg').innerText = "";
+            
             document.getElementById('tryAgainBtn').style.display = "none";
             document.getElementById('pinBoxes').style.display = "flex";
         }
