@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Passcode - Valentine's Surprise</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            /* Pink Gingham/Grid Pattern Background */
+            background-color: #ffd6e0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.4) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.4) 2px, transparent 2px);
+            background-size: 30px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Top Sticker with Maroon Outline */
+        .top-sticker {
+            width: 110px;
+            height: auto;
+            border-radius: 20px;
+            border: 2.5px solid #800f30;
+            box-shadow: 0 4px 12px rgba(128, 15, 48, 0.2);
+            margin-bottom: 15px;
+            background-color: #fff;
+        }
+
+        /* Minimal Text Header */
+        .title-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #800f30;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            letter-spacing: 0.2px;
+        }
+
+        /* Hint Button ABOVE Passcode Area (Initially Hidden) */
+        .hint-btn {
+            display: none;
+            background-color: #ffffff;
+            color: #800f30;
+            border: 1.5px solid #800f30;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(128, 15, 48, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .hint-btn:active {
+            transform: scale(0.95);
+            background-color: #ffe6eb;
+        }
+
+        /* Passcode Area Container */
+        .passcode-wrapper {
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        /* Two Separate White Boxes with Maroon Border */
+        .pin-boxes {
+            display: flex;
+            gap: 12px;
+        }
+
+        .pin-box {
+            width: 45px;
+            height: 50px;
+            background-color: #ffffff;
+            border: 2px solid #800f30;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 600;
+            color: #800f30;
+            box-shadow: 0 2px 8px rgba(128, 15, 48, 0.15);
+        }
+
+        /* Try Again Button (Replaces boxes on wrong passcode) */
+        .try-again-btn {
+            display: none;
+            background-color: #800f30;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(128, 15, 48, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .try-again-btn:active {
+            transform: scale(0.95);
+            background-color: #590d22;
+        }
+
+        .error-message {
+            color: #d90429;
+            font-size: 12px;
+            height: 18px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* Keypad Grid */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            width: 100%;
+            max-width: 260px;
+            margin-top: 5px;
+        }
+
+        .key-btn {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background-color: #800f30;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(128, 15, 48, 0.25);
+            transition: all 0.15s ease;
+            user-select: none;
+        }
+
+        .key-btn:active {
+            transform: scale(0.9);
+            background-color: #590d22;
+        }
+
+        .key-btn.action-btn {
+            background-color: transparent;
+            color: #800f30;
+            box-shadow: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .key-btn.action-btn:active {
+            background-color: rgba(128, 15, 48, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Top Sticker with Maroon Border -->
+        <img src="Sticker4.jpg" alt="Sticker" class="top-sticker">
+
+        <!-- Minimal Header Text -->
+        <p class="title-text">Enter our special date to continue for more surprises...</p>
+
+        <!-- Hint Button (ABOVE passcode area) -->
+        <button class="hint-btn" id="hintBtn" onclick="showHint()">Hint 🎀</button>
+
+        <!-- Passcode Area Wrapper -->
+        <div class="passcode-wrapper">
+            <!-- White Separate Boxes -->
+            <div class="pin-boxes" id="pinBoxes">
+                <div class="pin-box" id="box1"></div>
+                <div class="pin-box" id="box2"></div>
+            </div>
+
+            <!-- Try Again Button (hidden initially) -->
+            <button class="try-again-btn" id="tryAgainBtn" onclick="resetForTryAgain()">Try again 🙈</button>
+        </div>
+
+        <!-- Error / Success Message -->
+        <div class="error-message" id="errorMsg"></div>
+
+        <!-- Keypad -->
+        <div class="keypad" id="keypad">
+            <button class="key-btn" onclick="pressKey('1')">1</button>
+            <button class="key-btn" onclick="pressKey('2')">2</button>
+            <button class="key-btn" onclick="pressKey('3')">3</button>
+            <button class="key-btn" onclick="pressKey('4')">4</button>
+            <button class="key-btn" onclick="pressKey('5')">5</button>
+            <button class="key-btn" onclick="pressKey('6')">6</button>
+            <button class="key-btn" onclick="pressKey('7')">7</button>
+            <button class="key-btn" onclick="pressKey('8')">8</button>
+            <button class="key-btn" onclick="pressKey('9')">9</button>
+            <button class="key-btn action-btn" onclick="clearPin()">Clear</button>
+            <button class="key-btn" onclick="pressKey('0')">0</button>
+            <button class="key-btn action-btn" onclick="deleteLast()">⌫</button>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_PIN = "18";
+        let currentInput = "";
+        let wrongAttempts = 0;
+
+        function updateBoxes() {
+            document.getElementById('box1').innerText = currentInput[0] || "";
+            document.getElementById('box2').innerText = currentInput[1] || "";
+        }
+
+        function pressKey(num) {
+            if (currentInput.length < 2) {
+                currentInput += num;
+                updateBoxes();
+                
+                if (currentInput.length === 2) {
+                    setTimeout(checkPin, 200);
+                }
+            }
+        }
+
+        function deleteLast() {
+            if (currentInput.length > 0) {
+                currentInput = currentInput.slice(0, -1);
+                updateBoxes();
+                document.getElementById('errorMsg').innerText = "";
+            }
+        }
+
+        function clearPin() {
+            currentInput = "";
+            updateBoxes();
+            document.getElementById('errorMsg').innerText = "";
+        }
+
+        function checkPin() {
+            if (currentInput === CORRECT_PIN) {
+                document.getElementById('errorMsg').style.color = "#2b9348";
+                document.getElementById('errorMsg').innerText = "Unlocked! ❤️";
+                setTimeout(() => {
+                    window.location.href = "page5.html";
+                }, 500);
+            } else {
+                wrongAttempts++;
+                
+                // Hide passcode boxes
+                document.getElementById('pinBoxes').style.display = "none";
+                document.getElementById('errorMsg').style.color = "#d90429";
+                document.getElementById('errorMsg').innerText = "Wrong passcode!";
+
+                if (wrongAttempts >= 3) {
+                    // 3rd attempt and onwards: Show Hint button on top
+                    document.getElementById('hintBtn').style.display = "inline-block";
+                    document.getElementById('tryAgainBtn').style.display = "none";
+                } else {
+                    // 1st and 2nd attempt: Show Try Again button
+                    document.getElementById('tryAgainBtn').style.display = "block";
+                }
+            }
+        }
+
+        function showHint() {
+            // Display Hint Text in Error Message box
+            document.getElementById('errorMsg').style.color = "#800f30";
+            document.getElementById('errorMsg').innerText = "Putur's birthday 🎂";
+
+            // Hide Hint button after click and switch to Try Again button in 3 seconds
+            setTimeout(() => {
+                document.getElementById('hintBtn').style.display = "none";
+                document.getElementById('tryAgainBtn').style.display = "block";
+            }, 3000);
+        }
+
+        function resetForTryAgain() {
+            currentInput = "";
+            updateBoxes();
+            document.getElementById('errorMsg').innerText = "";
+            document.getElementById('tryAgainBtn').style.display = "none";
+            document.getElementById('pinBoxes').style.display = "flex";
+        }
+    </script>
+</body>
+</html>
