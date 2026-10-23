@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song 1 - Our Special Track 🎵</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            /* Pink Gingham/Grid Pattern Background */
+            background-color: #ffd6e0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.4) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.4) 2px, transparent 2px);
+            background-size: 30px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Spotify-style Lyrics Card Image Container */
+        .card-wrapper {
+            width: 100%;
+            max-width: 290px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2.5px solid #800f30;
+            box-shadow: 0 6px 18px rgba(128, 15, 48, 0.2);
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .card-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Player Controls Wrapper */
+        .player-container {
+            width: 100%;
+            max-width: 290px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 2px solid #800f30;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(128, 15, 48, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Progress Bar Area */
+        .progress-box {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background-color: #ffd6e0;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background-color: #800f30;
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+
+        .time-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #800f30;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* Buttons Row */
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Back & Next Buttons (For Show) */
+        .dummy-btn {
+            background: none;
+            border: none;
+            color: #800f30;
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: transform 0.15s ease;
+        }
+
+        .dummy-btn:active {
+            transform: scale(0.85);
+        }
+
+        /* Main Play/Pause Button */
+        .play-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: #800f30;
+            color: #ffffff;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(128, 15, 48, 0.25);
+            transition: transform 0.15s ease;
+        }
+
+        .play-btn:active {
+            transform: scale(0.9);
+            background-color: #590d22;
+        }
+
+        /* Back to page3 link */
+        .back-link {
+            margin-top: 15px;
+            color: #800f30;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Canva Lyrics Card Photo -->
+        <div class="card-wrapper">
+            <img src="Song1_card.png" alt="Lyrics Card 1" id="lyricsCard">
+        </div>
+
+        <!-- Audio File -->
+        <audio id="myAudio" src="Song1.mp3"></audio>
+
+        <!-- Custom Player Bar -->
+        <div class="player-container">
+            <!-- Progress Bar -->
+            <div class="progress-box">
+                <div class="progress-bar-bg" onclick="seekAudio(event)">
+                    <div class="progress-bar-fill" id="progressFill"></div>
+                </div>
+                <div class="time-labels">
+                    <span id="currentTime">0:00</span>
+                    <span id="durationTime">0:00</span>
+                </div>
+            </div>
+
+            <!-- Controls (Back, Play/Pause, Next) -->
+            <div class="controls-row">
+                <button class="dummy-btn" onclick="dummyClick()">⏮️</button>
+                <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                <button class="dummy-btn" onclick="dummyClick()">⏭️</button>
+            </div>
+        </div>
+
+        <!-- Back to Song List Button -->
+        <a href="page3.html" class="back-link">← Back to Songs</a>
+    </div>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const playBtn = document.getElementById('playBtn');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationTimeEl = document.getElementById('durationTime');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerText = "❚❚"; // Pause icon
+            } else {
+                audio.pause();
+                playBtn.innerText = "▶"; // Play icon
+            }
+        }
+
+        function formatTime(seconds) {
+            let min = Math.floor(seconds / 60);
+            let sec = Math.floor(seconds % 60);
+            if (sec < 10) sec = "0" + sec;
+            return min + ":" + sec;
+        }
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = progressPercent + "%";
+                currentTimeEl.innerText = formatTime(audio.currentTime);
+                durationTimeEl.innerText = formatTime(audio.duration);
+            }
+        });
+
+        function seekAudio(event) {
+            const progressBg = event.currentTarget;
+            const clickX = event.offsetX;
+            const totalWidth = progressBg.clientWidth;
+            if (audio.duration) {
+                audio.currentTime = (clickX / totalWidth) * audio.duration;
+            }
+        }
+
+        audio.addEventListener('ended', () => {
+            playBtn.innerText = "▶";
+            progressFill.style.width = "0%";
+        });
+
+        function dummyClick() {
+            // Dummy action for back/next buttons
+        }
+    </script>
+</body>
+  </html>
+  
