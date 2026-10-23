@@ -39,14 +39,14 @@
             text-align: center;
         }
 
-        /* Top Sticker with Maroon Border */
+        /* Top Sticker - Bada size */
         .top-sticker {
-            width: 110px;
+            width: 135px;
             height: auto;
-            border-radius: 20px;
+            border-radius: 22px;
             border: 2.5px solid #800f30;
             box-shadow: 0 4px 12px rgba(128, 15, 48, 0.2);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             background-color: #fff;
         }
 
@@ -55,29 +55,31 @@
             font-size: 14px;
             font-weight: 500;
             color: #800f30;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             line-height: 1.4;
             letter-spacing: 0.2px;
         }
 
-        /* Bolder & Bigger Hint Button ABOVE Passcode Area */
+        /* Large White Rectangular Hint Button with Maroon Border */
         .hint-btn {
             display: none;
+            width: 100%;
+            max-width: 260px;
             background-color: #ffffff;
             color: #800f30;
-            border: 2px solid #800f30;
-            padding: 8px 22px;
-            border-radius: 25px;
-            font-size: 15px;
+            border: 2.5px solid #800f30;
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            margin-bottom: 12px;
-            box-shadow: 0 3px 10px rgba(128, 15, 48, 0.18);
+            margin-bottom: 14px;
+            box-shadow: 0 4px 12px rgba(128, 15, 48, 0.15);
             transition: all 0.2s ease;
         }
 
         .hint-btn:active {
-            transform: scale(0.95);
+            transform: scale(0.97);
             background-color: #ffe6eb;
         }
 
@@ -88,55 +90,58 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 10px;
+            width: 100%;
         }
 
         /* Two Separate White Boxes with Maroon Border */
         .pin-boxes {
             display: flex;
-            gap: 12px;
+            gap: 14px;
         }
 
         .pin-box {
-            width: 48px;
-            height: 52px;
+            width: 52px;
+            height: 56px;
             background-color: #ffffff;
-            border: 2px solid #800f30;
-            border-radius: 12px;
+            border: 2.5px solid #800f30;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 600;
             color: #800f30;
-            box-shadow: 0 2px 8px rgba(128, 15, 48, 0.15);
+            box-shadow: 0 3px 10px rgba(128, 15, 48, 0.15);
         }
 
-        /* Bigger & Prominent Try Again Button */
+        /* White Rectangular Try Again Button with Maroon Border & Keypad Width */
         .try-again-btn {
             display: none;
-            background-color: #800f30;
-            color: #ffffff;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 16px;
-            font-size: 15px;
+            width: 100%;
+            max-width: 260px;
+            background-color: #ffffff;
+            color: #800f30;
+            border: 2.5px solid #800f30;
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 14px rgba(128, 15, 48, 0.3);
+            box-shadow: 0 4px 12px rgba(128, 15, 48, 0.15);
             transition: all 0.2s ease;
         }
 
         .try-again-btn:active {
-            transform: scale(0.95);
-            background-color: #590d22;
+            transform: scale(0.97);
+            background-color: #ffe6eb;
         }
 
         .error-message {
-            color: #d90429;
-            font-size: 13px;
-            height: 20px;
+            color: #800f30;
+            font-size: 14px;
+            height: 22px;
             margin-bottom: 8px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* Keypad Grid */
@@ -173,16 +178,18 @@
             background-color: #590d22;
         }
 
+        /* Clear & Backspace Buttons - Thode bade font size ke saath */
         .key-btn.action-btn {
             background-color: transparent;
             color: #800f30;
             box-shadow: none;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 600;
         }
 
         .key-btn.action-btn:active {
             background-color: rgba(128, 15, 48, 0.1);
+            border-radius: 50%;
         }
     </style>
 </head>
@@ -195,7 +202,7 @@
         <!-- Minimal Header Text -->
         <p class="title-text">Enter our special date to continue for more surprises...</p>
 
-        <!-- Hint Button (ABOVE passcode area) -->
+        <!-- White Rectangular Hint Button (ABOVE passcode area) -->
         <button class="hint-btn" id="hintBtn" onclick="showHint()">Hint 🎀</button>
 
         <!-- Passcode Area Wrapper -->
@@ -206,7 +213,7 @@
                 <div class="pin-box" id="box2"></div>
             </div>
 
-            <!-- Try Again Button (hidden initially) -->
+            <!-- White Rectangular Try Again Button -->
             <button class="try-again-btn" id="tryAgainBtn" onclick="resetForTryAgain()">Try again 🙈</button>
         </div>
 
@@ -282,7 +289,7 @@
 
                 if (wrongAttempts >= 3) {
                     // 3rd attempt onwards: Show Hint button on top
-                    document.getElementById('hintBtn').style.display = "inline-block";
+                    document.getElementById('hintBtn').style.display = "block";
                     document.getElementById('tryAgainBtn').style.display = "none";
                 } else {
                     // 1st & 2nd attempt: Show Try Again button
@@ -296,8 +303,9 @@
             document.getElementById('errorMsg').style.color = "#800f30";
             document.getElementById('errorMsg').innerText = "Putur's birthday 🎂";
 
-            // Hide Hint button after click and switch to Try Again button in 3 seconds
+            // After 3 seconds: hide hint button, clear hint text, show Try Again button
             setTimeout(() => {
+                document.getElementById('errorMsg').innerText = "";
                 document.getElementById('hintBtn').style.display = "none";
                 document.getElementById('tryAgainBtn').style.display = "block";
             }, 3000);
@@ -307,7 +315,7 @@
             currentInput = "";
             updateBoxes();
             
-            // Clear the "Putur's birthday 🎂" message completely
+            // Clear text on Try Again click
             document.getElementById('errorMsg').innerText = "";
             
             document.getElementById('tryAgainBtn').style.display = "none";
