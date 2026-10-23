@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song 3 - Can't help falling in love with you 🎵</title>
+    <title>Song 3 - Can't help falling in love 🎵</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -150,8 +150,8 @@
 <body>
     <div class="container">
         <div class="card-wrapper">
-            <!-- Video clip jo loop par chalegi -->
-            <video src="Song3_pic.mp4" autoplay muted loop playsinline></video>
+            <!-- muted lagane se video ki apni aawaz band rahegi aur sirf main song bajega -->
+            <video id="bgVideo" src="Song3_pic.mp4" autoplay muted loop playsinline preload="auto"></video>
         </div>
 
         <div class="song-info">
@@ -162,7 +162,7 @@
             <div class="heart-icon">❤️</div>
         </div>
 
-        <audio id="myAudio" src="Song3.mp3"></audio>
+        <audio id="myAudio" src="Song3.mp3" preload="metadata"></audio>
 
         <div class="player-box">
             <div class="progress-box">
@@ -197,6 +197,7 @@
 
     <script>
         const audio = document.getElementById('myAudio');
+        const video = document.getElementById('bgVideo');
         const playBtn = document.getElementById('playBtn');
         const progressFill = document.getElementById('progressFill');
         const currentTimeEl = document.getElementById('currentTime');
@@ -205,9 +206,11 @@
         function togglePlay() {
             if (audio.paused) {
                 audio.play();
+                video.play();
                 playBtn.innerText = "❚❚";
             } else {
                 audio.pause();
+                video.pause();
                 playBtn.innerText = "▶";
             }
         }
@@ -232,10 +235,6 @@
             durationTimeEl.innerText = formatTime(audio.duration);
         });
 
-        audio.addEventListener('seeked', () => {
-            // Optional sync handling if needed
-        });
-
         function seekAudio(event) {
             const progressBg = event.currentTarget;
             const clickX = event.offsetX;
@@ -247,6 +246,7 @@
 
         audio.addEventListener('ended', () => {
             playBtn.innerText = "▶";
+            video.pause();
             progressFill.style.width = "0%";
         });
     </script>
