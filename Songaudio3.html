@@ -34,12 +34,10 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             background-color: #1a090b;
         }
-        .card-wrapper video {
+        .card-wrapper img {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: cover;
-            pointer-events: none;
         }
         .song-info {
             width: 100%;
@@ -148,7 +146,7 @@
 <body>
     <div class="container">
         <div class="card-wrapper">
-            <video id="bgVideo" src="Song3_pic.mp4" muted loop playsinline preload="auto"></video>
+            <img src="Song3_pic.jpg" alt="Song 3 Cover">
         </div>
 
         <div class="song-info">
@@ -194,7 +192,6 @@
 
     <script>
         const audio = document.getElementById('myAudio');
-        const video = document.getElementById('bgVideo');
         const playBtn = document.getElementById('playBtn');
         const progressFill = document.getElementById('progressFill');
         const currentTimeEl = document.getElementById('currentTime');
@@ -203,14 +200,12 @@
         function togglePlay() {
             if (audio.paused) {
                 audio.play().then(() => {
-                    video.play();
                     playBtn.innerText = "❚❚";
                 }).catch(err => {
                     console.log("Play error:", err);
                 });
             } else {
                 audio.pause();
-                video.pause();
                 playBtn.innerText = "▶";
             }
         }
@@ -246,7 +241,6 @@
 
         audio.addEventListener('ended', () => {
             playBtn.innerText = "▶";
-            video.pause();
             progressFill.style.width = "0%";
         });
     </script>
