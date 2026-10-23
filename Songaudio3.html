@@ -150,7 +150,6 @@
 <body>
     <div class="container">
         <div class="card-wrapper">
-            <!-- muted lagane se video ki apni aawaz band rahegi aur sirf main song bajega -->
             <video id="bgVideo" src="Song3_pic.mp4" autoplay muted loop playsinline preload="auto"></video>
         </div>
 
@@ -162,7 +161,7 @@
             <div class="heart-icon">❤️</div>
         </div>
 
-        <audio id="myAudio" src="Song3.mp3" preload="metadata"></audio>
+        <audio id="myAudio" src="Song3.mp3" preload="auto"></audio>
 
         <div class="player-box">
             <div class="progress-box">
@@ -205,9 +204,12 @@
 
         function togglePlay() {
             if (audio.paused) {
-                audio.play();
-                video.play();
-                playBtn.innerText = "❚❚";
+                audio.play().then(() => {
+                    video.play();
+                    playBtn.innerText = "❚❚";
+                }).catch(error => {
+                    console.log("Playback error:", error);
+                });
             } else {
                 audio.pause();
                 video.pause();
