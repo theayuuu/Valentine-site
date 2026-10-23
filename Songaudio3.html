@@ -39,6 +39,7 @@
             height: auto;
             display: block;
             object-fit: cover;
+            pointer-events: none;
         }
         .song-info {
             width: 100%;
@@ -75,9 +76,9 @@
         }
         .progress-bar-bg {
             width: 100%;
-            height: 4px;
+            height: 6px;
             background-color: #5c2c34;
-            border-radius: 2px;
+            border-radius: 3px;
             overflow: hidden;
             cursor: pointer;
         }
@@ -85,7 +86,7 @@
             width: 0%;
             height: 100%;
             background-color: #800f30;
-            border-radius: 2px;
+            border-radius: 3px;
             transition: width 0.1s linear;
         }
         .time-labels {
@@ -111,10 +112,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.2s ease;
-        }
-        .control-btn:active {
-            opacity: 0.7;
+            padding: 5px;
         }
         .play-btn {
             width: 54px;
@@ -150,7 +148,7 @@
 <body>
     <div class="container">
         <div class="card-wrapper">
-            <video id="bgVideo" src="Song3_pic.mp4" autoplay muted loop playsinline preload="auto"></video>
+            <video id="bgVideo" src="Song3_pic.mp4" muted loop playsinline preload="auto"></video>
         </div>
 
         <div class="song-info">
@@ -161,7 +159,7 @@
             <div class="heart-icon">❤️</div>
         </div>
 
-        <audio id="myAudio" src="Song3.mp3" preload="auto"></audio>
+        <audio id="myAudio" src="Song3.mp3" preload="metadata"></audio>
 
         <div class="player-box">
             <div class="progress-box">
@@ -207,8 +205,8 @@
                 audio.play().then(() => {
                     video.play();
                     playBtn.innerText = "❚❚";
-                }).catch(error => {
-                    console.log("Playback error:", error);
+                }).catch(err => {
+                    console.log("Play error:", err);
                 });
             } else {
                 audio.pause();
