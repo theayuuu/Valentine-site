@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song 1 - Our Special Track 🎵</title>
+    <title>Song 1 - Kut Kut Bajra 🎵</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             width: 100vw;
             min-height: 100vh;
-            background-color: #000000;
+            background-color: #2b1215;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,31 +20,54 @@
         }
         .container {
             width: 100%;
-            max-width: 340px;
+            max-width: 320px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 20px;
         }
         .card-wrapper {
             width: 100%;
-            max-width: 290px;
+            max-width: 280px;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
-            margin-bottom: 25px;
-            background-color: #121212;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            background-color: #1a090b;
         }
         .card-wrapper img {
             width: 100%;
             height: auto;
             display: block;
         }
+        .song-info {
+            width: 100%;
+            max-width: 280px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5px;
+        }
+        .song-text h2 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .song-text p {
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        .heart-icon {
+            font-size: 20px;
+            cursor: pointer;
+            color: #800f30;
+        }
         .player-box {
             width: 100%;
-            max-width: 290px;
+            max-width: 280px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
         .progress-box {
             width: 100%;
@@ -52,7 +75,7 @@
         .progress-bar-bg {
             width: 100%;
             height: 4px;
-            background-color: #333333;
+            background-color: #5c2c34;
             border-radius: 2px;
             overflow: hidden;
             cursor: pointer;
@@ -68,15 +91,15 @@
             display: flex;
             justify-content: space-between;
             font-size: 11px;
-            color: #888888;
-            margin-top: 6px;
+            color: #b3b3b3;
+            margin-top: 5px;
         }
         .controls-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 0 10px;
+            padding: 0 5px;
         }
         .control-btn {
             background: none;
@@ -86,31 +109,29 @@
             cursor: pointer;
         }
         .play-btn {
-            width: 54px;
-            height: 54px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            background-color: #000000;
+            background-color: #800f30;
             color: #ffffff;
-            border: 2px solid #333333;
+            border: none;
             font-size: 18px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.8);
-            transition: transform 0.1s ease, border-color 0.2s ease;
+            box-shadow: 0 4px 15px rgba(128, 15, 48, 0.4);
+            transition: transform 0.1s ease;
         }
         .play-btn:active {
             transform: scale(0.92);
-            border-color: #ffffff;
         }
         .back-link {
-            margin-top: 25px;
-            color: #888888;
+            margin-top: 15px;
+            color: #b3b3b3;
             font-size: 12px;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s ease;
         }
         .back-link:hover {
             color: #ffffff;
@@ -121,7 +142,15 @@
 <body>
     <div class="container">
         <div class="card-wrapper">
-            <img src="Song1_card.png" alt="Song Card 1">
+            <img src="Song1_card.png" alt="Song 1 Card">
+        </div>
+
+        <div class="song-info">
+            <div class="song-text">
+                <h2>Kut Kut Bajra</h2>
+                <p>Our Special Track</p>
+            </div>
+            <div class="heart-icon">❤️</div>
         </div>
 
         <audio id="myAudio" src="Song1.mp3"></audio>
