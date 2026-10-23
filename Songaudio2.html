@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song 2 - Tujhe chaand ke bahaane dekhun 🎵</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            background-color: #2b1215;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .card-wrapper {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            background-color: #1a090b;
+        }
+        .card-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .song-info {
+            width: 100%;
+            max-width: 280px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5px;
+        }
+        .song-text h2 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .song-text p {
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        .heart-icon {
+            font-size: 22px;
+            cursor: pointer;
+            color: #800f30;
+        }
+        .player-box {
+            width: 100%;
+            max-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .progress-box {
+            width: 100%;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 4px;
+            background-color: #5c2c34;
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background-color: #800f30;
+            border-radius: 2px;
+            transition: width 0.1s linear;
+        }
+        .time-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #b3b3b3;
+            margin-top: 5px;
+        }
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 5px;
+        }
+        .control-btn {
+            background: none;
+            border: none;
+            color: #800f30;
+            font-size: 20px;
+      
