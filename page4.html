@@ -15,9 +15,8 @@
         body {
             width: 100vw;
             min-height: 100vh;
-            background: url('bg-pattern.jpg') repeat;
-            background-size: cover;
-            background-position: center;
+            /* Blurry Soft Valentine Pastel Gradient Background */
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #ff85a1 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,18 +30,19 @@
             width: 100%;
             max-width: 340px;
             border-radius: 28px;
-            padding: 25px 20px;
-            box-shadow: 0 10px 30px rgba(128, 15, 48, 0.15);
+            padding: 28px 20px 22px 20px;
+            box-shadow: 0 15px 35px rgba(128, 15, 48, 0.18);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            position: relative;
         }
 
         .sticker {
             width: 100px;
             height: auto;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-radius: 16px;
         }
 
@@ -50,14 +50,17 @@
             color: #800f30;
             font-size: 18px;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 18px;
         }
 
-        .sub-text {
-            color: #b3526d;
+        /* Temporary Hint Text Box */
+        .hint-text-box {
+            min-height: 20px;
+            color: #800f30;
             font-size: 12px;
-            margin-bottom: 20px;
             font-weight: 500;
+            margin-bottom: 10px;
+            display: none;
         }
 
         /* Date Slots for Numbers */
@@ -66,7 +69,7 @@
             gap: 8px;
             justify-content: center;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             min-height: 36px;
         }
 
@@ -99,6 +102,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             width: 100%;
+            margin-bottom: 15px;
         }
 
         .key {
@@ -138,13 +142,34 @@
             font-size: 16px;
         }
 
-        /* Error message styling */
-        .error-msg {
-            color: #e63946;
-            font-size: 12px;
-            margin-top: 12px;
-            height: 18px;
-            font-weight: 500;
+        /* Medium Sized Action Buttons (Try Again / Hint 🙈) */
+        .action-btn-area {
+            min-height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .maroon-outline-btn {
+            background-color: #ffffff;
+            color: #800f30;
+            border: 2px solid #800f30;
+            border-radius: 20px;
+            padding: 7px 22px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: none;
+            box-shadow: 0 3px 8px rgba(128, 15, 48, 0.12);
+        }
+
+        .maroon-outline-btn:active {
+            background-color: #800f30;
+            color: #ffffff;
+            transform: scale(0.95);
         }
     </style>
 </head>
@@ -154,9 +179,11 @@
         <!-- Sticker -->
         <img id="mainSticker" src="Sticker4.jpg" alt="Cute Sticker" class="sticker">
 
-        <!-- Title & Subtitle -->
-        <h2>Enter the Special Date</h2>
-        <p class="sub-text">When we talked for the first time</p>
+        <!-- Title -->
+        <h2>Enter our special date.</h2>
+
+        <!-- Hint Text Box (Hidden initially) -->
+        <div id="hintTextBox" class="hint-text-box">When we talked for the first time</div>
 
         <!-- 8 Slots (For DDMMYYYY) -->
         <div class="slots-wrapper" id="slotsWrapper">
@@ -186,17 +213,25 @@
             <button class="key back-btn" onclick="backspace()">⌫</button>
         </div>
 
-        <div class="error-msg" id="errorMsg"></div>
+        <!-- Action Button Area (Try Again / Hint) -->
+        <div class="action-btn-area">
+            <button id="tryAgainBtn" class="maroon-outline-btn" onclick="handleTryAgain()">Try Again</button>
+            <button id="hintBtn" class="maroon-outline-btn" onclick="showHint()">Hint 🙈</button>
+        </div>
     </div>
 
     <script>
-        // Set your correct date here (Format: DDMMYYYY, total 8 digits, e.g., "14022024")
+        // Set your correct date here (Format: DDMMYYYY, e.g., "14022024")
         const CORRECT_DATE = "14022024"; 
         const MAX_DIGITS = CORRECT_DATE.length;
 
         let currentInput = "";
+        let wrongAttempts = 0;
+
         const slots = document.querySelectorAll('.slot');
-        const errorMsg = document.getElementById('errorMsg');
+        const tryAgainBtn = document.getElementById('tryAgainBtn');
+        const hintBtn = document.getElementById('hintBtn');
+        const hintTextBox = document.getElementById('hintTextBox');
 
         function updateSlots() {
             slots.forEach((slot, index) => {
@@ -213,7 +248,6 @@
         function pressKey(digit) {
             if (currentInput.length < MAX_DIGITS) {
                 currentInput += digit;
-                errorMsg.innerText = "";
                 updateSlots();
 
                 if (currentInput.length === MAX_DIGITS) {
@@ -225,14 +259,12 @@
         function backspace() {
             if (currentInput.length > 0) {
                 currentInput = currentInput.slice(0, -1);
-                errorMsg.innerText = "";
                 updateSlots();
             }
         }
 
         function clearAll() {
             currentInput = "";
-            errorMsg.innerText = "";
             updateSlots();
         }
 
@@ -240,11 +272,36 @@
             if (currentInput === CORRECT_DATE) {
                 window.location.href = "page5.html";
             } else {
-                errorMsg.innerText = "Oops! Wrong date, try again 🙈";
-                setTimeout(() => {
-                    clearAll();
-                }, 1000);
+                wrongAttempts++;
+                
+                // Show Try Again or Hint Button
+                if (wrongAttempts >= 2) {
+                    tryAgainBtn.style.display = "none";
+                    hintBtn.style.display = "inline-block";
+                } else {
+                    tryAgainBtn.style.display = "inline-block";
+                    hintBtn.style.display = "none";
+                }
             }
+        }
+
+        function handleTryAgain() {
+            clearAll();
+            tryAgainBtn.style.display = "none";
+        }
+
+        function showHint() {
+            // Hide hint button
+            hintBtn.style.display = "none";
+            
+            // Show hint text above slots
+            hintTextBox.style.display = "block";
+            clearAll();
+
+            // Disappear after 2 seconds
+            setTimeout(() => {
+                hintTextBox.style.display = "none";
+            }, 2000);
         }
     </script>
 </body>
