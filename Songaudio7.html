@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song 7 - Samjhawan 🎵</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 100vw;
+            min-height: 100vh;
+            background-color: #2b1215;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .card-wrapper {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            background-color: #1a090b;
+        }
+        .card-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .song-info {
+            width: 100%;
+            max-width: 280px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5px;
+        }
+        .song-text h2 {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .song-text p {
+            color: #b3b3b3;
+            font-size: 12px;
+        }
+        .heart-icon {
+            font-size: 22px;
+            cursor: pointer;
+            color: #e63946;
+        }
+        .player-box {
+            width: 100%;
+            max-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .progress-box {
+            width: 100%;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background-color: #5c2c34;
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background-color: #800f30;
+            border-radius: 3px;
+            transition: width 0.1s linear;
+        }
+        .time-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #b3b3b3;
+            margin-top: 5px;
+        }
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 5px;
+        }
+        .control-btn {
+            background: none;
+            border: none;
+            color: #800f30;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        .play-btn {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background-color: #800f30;
+            color: #ffffff;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(128, 15, 48, 0.4);
+            transition: transform 0.1s ease;
+        }
+        .play-btn:active {
+            transform: scale(0.92);
+        }
+        .back-link {
+            margin-top: 15px;
+            color: #b3b3b3;
+            font-size: 12px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cover Photo -->
+        <div class="card-wrapper">
+            <img src="Song7_pic.jpg" alt="Song 7 Cover">
+        </div>
+
+        <!-- Song Details -->
+        <div class="song-info">
+            <div class="song-text">
+                <h2>Samjhawan</h2>
+                <p>Our Special Track</p>
+            </div>
+            <div class="heart-icon">❤️</div>
+        </div>
+
+        <!-- Audio File Link -->
+        <audio id="myAudio" src="song7.mp3" preload="metadata"></audio>
+
+        <!-- Player Controls & Progress -->
+        <div class="player-box">
+            <div class="progress-box">
+                <div class="progress-bar-bg" onclick="seekAudio(event)">
+                    <div class="progress-bar-fill" id="progressFill"></div>
+                </div>
+                <div class="time-labels">
+                    <span id="currentTime">0:00</span>
+                    <span id="durationTime">0:00</span>
+                </div>
+            </div>
+
+            <div class="controls-row">
+                <button class="control-btn" title="Shuffle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.45 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+                </button>
+                <button class="control-btn" title="Previous">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                </button>
+                <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                <button class="control-btn" title="Next">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+                <button class="control-btn" title="Repeat">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <a href="page3.html" class="back-link">← Back to Songs</a>
+    </div>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const playBtn = document.getElementById('playBtn');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationTimeEl = document.getElementById('durationTime');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playBtn.innerText = "❚❚";
+                }).catch(err => {
+                    console.log("Play error:", err);
+                });
+            } else {
+                audio.pause();
+                playBtn.innerText = "▶";
+            }
+        }
+
+        function formatTime(seconds) {
+            let min = Math.floor(seconds / 60);
+            let sec = Math.floor(seconds % 60);
+            if (sec < 10) sec = "0" + sec;
+            return min + ":" + sec;
+        }
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = progressPercent + "%";
+                currentTimeEl.innerText = formatTime(audio.currentTime);
+                durationTimeEl.innerText = formatTime(audio.duration);
+            }
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationTimeEl.innerText = formatTime(audio.duration);
+        });
+
+        function seekAudio(event) {
+            const progressBg = event.currentTarget;
+            const clickX = event.offsetX;
+            const totalWidth = progressBg.clientWidth;
+            if (audio.duration) {
+                audio.currentTime = (clickX / totalWidth) * audio.duration;
+            }
+        }
+
+        audio.addEventListener('ended', () => {
+            playBtn.innerText = "▶";
+            progressFill.style.width = "0%";
+        });
+    </script>
+</body>
+</html>
