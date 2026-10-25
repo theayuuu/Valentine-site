@@ -15,8 +15,12 @@
         body {
             width: 100vw;
             min-height: 100vh;
-            /* Blurry Soft Valentine Pastel Gradient Background */
-            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #ff85a1 100%);
+            /* Pure CSS Polka Dot Pattern Background matching the uploaded image */
+            background-color: #f7b2bd;
+            background-image: radial-gradient(#800f30 15%, transparent 16%),
+                              radial-gradient(#800f30 15%, transparent 16%);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,12 +35,11 @@
             max-width: 340px;
             border-radius: 28px;
             padding: 28px 20px 22px 20px;
-            box-shadow: 0 15px 35px rgba(128, 15, 48, 0.18);
+            box-shadow: 0 15px 35px rgba(128, 15, 48, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            position: relative;
         }
 
         .sticker {
@@ -50,31 +53,31 @@
             color: #800f30;
             font-size: 18px;
             font-weight: 600;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
         /* Temporary Hint Text Box */
         .hint-text-box {
-            min-height: 20px;
+            min-height: 22px;
             color: #800f30;
             font-size: 12px;
-            font-weight: 500;
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 12px;
             display: none;
         }
 
-        /* Date Slots for Numbers */
+        /* Date Slots for Underscores & Numbers */
         .slots-wrapper {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             min-height: 36px;
         }
 
         .slot {
-            width: 26px;
+            width: 24px;
             height: 32px;
             display: flex;
             align-items: center;
@@ -82,18 +85,8 @@
             font-size: 18px;
             font-weight: 600;
             color: #800f30;
-            border-bottom: 2px solid #f0c2cd;
+            border-bottom: 2px solid #800f30;
             transition: all 0.2s ease;
-        }
-
-        .slot.filled {
-            border-bottom-color: #800f30;
-            animation: popIn 0.2s ease-out;
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.5); }
-            100% { transform: scale(1); }
         }
 
         /* Numpad Layout */
@@ -142,31 +135,31 @@
             font-size: 16px;
         }
 
-        /* Medium Sized Action Buttons (Try Again / Hint 🙈) */
+        /* Medium Sized Action Buttons Area (Try Again / Hint 🙈) */
         .action-btn-area {
-            min-height: 38px;
+            min-height: 42px;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
         }
 
-        .maroon-outline-btn {
-            background-color: #ffffff;
+        .custom-action-btn {
+            background-color: #fce8ed;
             color: #800f30;
             border: 2px solid #800f30;
-            border-radius: 20px;
-            padding: 7px 22px;
+            border-radius: 22px;
+            padding: 9px 28px;
             font-size: 13px;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
             cursor: pointer;
             transition: all 0.2s ease;
             display: none;
-            box-shadow: 0 3px 8px rgba(128, 15, 48, 0.12);
+            box-shadow: 0 4px 10px rgba(128, 15, 48, 0.1);
         }
 
-        .maroon-outline-btn:active {
+        .custom-action-btn:active {
             background-color: #800f30;
             color: #ffffff;
             transform: scale(0.95);
@@ -215,8 +208,8 @@
 
         <!-- Action Button Area (Try Again / Hint) -->
         <div class="action-btn-area">
-            <button id="tryAgainBtn" class="maroon-outline-btn" onclick="handleTryAgain()">Try Again</button>
-            <button id="hintBtn" class="maroon-outline-btn" onclick="showHint()">Hint 🙈</button>
+            <button id="tryAgainBtn" class="custom-action-btn" onclick="handleTryAgain()">Try Again</button>
+            <button id="hintBtn" class="custom-action-btn" onclick="showHint()">Hint 🙈</button>
         </div>
     </div>
 
@@ -237,10 +230,8 @@
             slots.forEach((slot, index) => {
                 if (index < currentInput.length) {
                     slot.innerText = currentInput[index];
-                    slot.classList.add('filled');
                 } else {
                     slot.innerText = "";
-                    slot.classList.remove('filled');
                 }
             });
         }
@@ -274,7 +265,7 @@
             } else {
                 wrongAttempts++;
                 
-                // Show Try Again or Hint Button
+                // Show Try Again or Hint Button based on attempts
                 if (wrongAttempts >= 2) {
                     tryAgainBtn.style.display = "none";
                     hintBtn.style.display = "inline-block";
@@ -291,10 +282,7 @@
         }
 
         function showHint() {
-            // Hide hint button
             hintBtn.style.display = "none";
-            
-            // Show hint text above slots
             hintTextBox.style.display = "block";
             clearAll();
 
@@ -306,3 +294,4 @@
     </script>
 </body>
 </html>
+
