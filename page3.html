@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jukebox - Valentine's Surprise</title>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Meddon&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,27 +16,15 @@
         body {
             width: 100vw;
             min-height: 100vh;
-            background: url('bg-pattern.jpg') repeat;
+            /* Background image for Page 3 */
+            background: url('bg-page3.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-position: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             font-family: 'Poppins', sans-serif;
-            padding: 25px 15px;
+            padding: 30px 15px;
             position: relative;
-        }
-
-        /* Heart pattern background overlay */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, rgba(128, 15, 48, 0.15) 100%);
-            z-index: 1;
         }
 
         .main-content {
@@ -52,24 +40,12 @@
 
         /* Cursive Header */
         h1 {
-            font-family: 'Meddon', cursive;
-            font-size: 14px;
-            color: #590d22;
-            margin-bottom: 15px;
-            white-space: nowrap;
-            font-weight: normal;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-        }
-
-        /* Top Sticker with Maroon Outline/Border */
-        .header-sticker {
-            width: 110px;
-            height: auto;
+            font-family: 'Sacramento', cursive;
+            font-size: 32px;
+            color: #ffccd5;
             margin-bottom: 25px;
-            border-radius: 18px;
-            border: 2px solid #800f30;
-            box-shadow: 0 0 10px rgba(128, 15, 48, 0.3);
-            display: block;
+            font-weight: normal;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
         }
 
         .btn-group {
@@ -79,18 +55,20 @@
             gap: 12px;
         }
 
+        /* Song Buttons matching dark background */
         .song-btn {
             width: 100%;
             padding: 14px;
-            background-color: #800f30;
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
             font-size: 15px;
             font-weight: 500;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 16px;
             cursor: pointer;
-            box-shadow: 0 6px 18px rgba(128, 15, 48, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             text-decoration: none;
             display: block;
@@ -99,14 +77,14 @@
 
         .song-btn:active {
             transform: scale(0.97);
-            background-color: #590d22;
+            background-color: rgba(255, 133, 161, 0.4);
         }
 
         /* Simple Divider Line */
         .divider {
             width: 100%;
             height: 1px;
-            background: rgba(128, 15, 48, 0.25);
+            background: rgba(255, 255, 255, 0.2);
             margin: 20px 0;
         }
     </style>
@@ -117,10 +95,7 @@
         <!-- Single Line Cursive Header -->
         <h1>Some songs that remind me of you ♥️</h1>
 
-        <!-- Sticker Just Below Heading -->
-        <img src="Sticker3.jpg" alt="Cute Sticker" class="header-sticker">
-
-        <!-- 10 Song Buttons Linked -->
+        <!-- 10 Song Buttons Linked to individual pages -->
         <div class="btn-group">
             <a href="Songaudio1.html" class="song-btn">Song 1 🎵</a>
             <a href="Songaudio2.html" class="song-btn">Song 2 🎵</a>
