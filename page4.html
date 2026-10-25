@@ -15,12 +15,9 @@
         body {
             width: 100vw;
             min-height: 100vh;
-            /* Pure CSS Polka Dot Pattern Background matching the uploaded image */
-            background-color: #f7b2bd;
-            background-image: radial-gradient(#800f30 15%, transparent 16%),
-                              radial-gradient(#800f30 15%, transparent 16%);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
+            /* Dark Maroon Heart Aesthetic Wallpaper Background */
+            background: url('bg-heart.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,42 +25,34 @@
             padding: 20px;
         }
 
-        /* Outer White Card Container */
+        /* Direct Container without White Box */
         .card-container {
-            background-color: #ffffff;
             width: 100%;
             max-width: 340px;
-            border-radius: 28px;
-            padding: 28px 20px 22px 20px;
-            box-shadow: 0 15px 35px rgba(128, 15, 48, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-        }
-
-        .sticker {
-            width: 100px;
-            height: auto;
-            margin-bottom: 12px;
-            border-radius: 16px;
+            padding: 20px;
         }
 
         h2 {
-            color: #800f30;
-            font-size: 18px;
+            color: #ffe6eb;
+            font-size: 20px;
             font-weight: 600;
             margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* Temporary Hint Text Box */
         .hint-text-box {
-            min-height: 22px;
-            color: #800f30;
-            font-size: 12px;
+            min-height: 24px;
+            color: #ffccd5;
+            font-size: 13px;
             font-weight: 600;
             margin-bottom: 12px;
             display: none;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
         /* Date Slots for Underscores & Numbers */
@@ -72,7 +61,7 @@
             gap: 6px;
             justify-content: center;
             align-items: center;
-            margin-bottom: 22px;
+            margin-bottom: 25px;
             min-height: 36px;
         }
 
@@ -84,30 +73,32 @@
             justify-content: center;
             font-size: 18px;
             font-weight: 600;
-            color: #800f30;
-            border-bottom: 2px solid #800f30;
+            color: #ffffff;
+            border-bottom: 2px solid #ff85a1;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
             transition: all 0.2s ease;
         }
 
-        /* Numpad Layout */
+        /* Numpad Grid */
         .numpad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 12px;
             width: 100%;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .key {
-            background-color: #fce8ed;
-            color: #800f30;
-            border: none;
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
-            padding: 14px 0;
-            font-size: 16px;
+            padding: 15px 0;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(128, 15, 48, 0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: all 0.15s ease;
             display: flex;
             align-items: center;
@@ -116,28 +107,29 @@
         }
 
         .key:active {
-            background-color: #800f30;
-            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.4);
             transform: scale(0.95);
         }
 
         .key.clear-btn {
-            font-size: 12px;
+            font-size: 13px;
             background-color: transparent;
-            color: #b3526d;
+            border: none;
+            color: #ffccd5;
             box-shadow: none;
         }
 
         .key.back-btn {
             background-color: transparent;
-            color: #b3526d;
+            border: none;
+            color: #ffccd5;
             box-shadow: none;
-            font-size: 16px;
+            font-size: 18px;
         }
 
-        /* Medium Sized Action Buttons Area (Try Again / Hint 🙈) */
+        /* Action Buttons Area (Try Again / Hint 🙈) */
         .action-btn-area {
-            min-height: 42px;
+            min-height: 45px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -145,22 +137,23 @@
         }
 
         .custom-action-btn {
-            background-color: #fce8ed;
-            color: #800f30;
-            border: 2px solid #800f30;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            border: 2px solid #ff85a1;
             border-radius: 22px;
-            padding: 9px 28px;
-            font-size: 13px;
+            padding: 10px 30px;
+            font-size: 14px;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
             cursor: pointer;
             transition: all 0.2s ease;
             display: none;
-            box-shadow: 0 4px 10px rgba(128, 15, 48, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .custom-action-btn:active {
-            background-color: #800f30;
+            background-color: #ff85a1;
             color: #ffffff;
             transform: scale(0.95);
         }
@@ -169,16 +162,13 @@
 <body>
 
     <div class="card-container">
-        <!-- Sticker -->
-        <img id="mainSticker" src="Sticker4.jpg" alt="Cute Sticker" class="sticker">
-
         <!-- Title -->
         <h2>Enter our special date.</h2>
 
         <!-- Hint Text Box (Hidden initially) -->
         <div id="hintTextBox" class="hint-text-box">When we talked for the first time</div>
 
-        <!-- 8 Slots (For DDMMYYYY) -->
+        <!-- 8 Slots (For DDMMYYYY: 18122025) -->
         <div class="slots-wrapper" id="slotsWrapper">
             <div class="slot"></div>
             <div class="slot"></div>
@@ -214,8 +204,8 @@
     </div>
 
     <script>
-        // Set your correct date here (Format: DDMMYYYY, e.g., "14022024")
-        const CORRECT_DATE = "14022024"; 
+        // Correct date set to 18122025 (18 12 2025)
+        const CORRECT_DATE = "18122025"; 
         const MAX_DIGITS = CORRECT_DATE.length;
 
         let currentInput = "";
@@ -265,7 +255,6 @@
             } else {
                 wrongAttempts++;
                 
-                // Show Try Again or Hint Button based on attempts
                 if (wrongAttempts >= 2) {
                     tryAgainBtn.style.display = "none";
                     hintBtn.style.display = "inline-block";
@@ -286,7 +275,6 @@
             hintTextBox.style.display = "block";
             clearAll();
 
-            // Disappear after 2 seconds
             setTimeout(() => {
                 hintTextBox.style.display = "none";
             }, 2000);
@@ -294,4 +282,3 @@
     </script>
 </body>
 </html>
-
