@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -24,8 +24,9 @@
         }
 
         body {
-            /* Soft Pink to Red Aura Radial Gradient Background */
-            background: radial-gradient(circle at center, #de4968 0%, #eb8498 35%, #f7bcbe 70%, #fbe3e4 100%);
+            /* Custom Background Wallpaper */
+            background: url('bg-page1.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -41,14 +42,15 @@
             z-index: 10;
         }
 
-        /* Top Header in Big Cursive */
+        /* Top Header in Thin Aesthetic Cursive Font */
         .top-header {
-            font-family: 'Dancing Script', cursive;
-            font-size: 44px;
+            font-family: 'Sacramento', cursive;
+            font-size: 52px;
             color: #ffffff;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             line-height: 1.1;
             margin-bottom: 4px;
+            font-weight: normal;
         }
 
         /* Sub-header in Minimal Mini Font */
@@ -59,6 +61,7 @@
             letter-spacing: 0.5px;
             margin-bottom: 20px;
             opacity: 0.95;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         }
 
         /* Subtitle Message */
@@ -69,6 +72,7 @@
             line-height: 1.5;
             margin-bottom: 35px;
             opacity: 0.9;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         }
 
         /* Square Button Container */
@@ -110,19 +114,17 @@
             touch-action: none;
             user-select: none;
         }
+        
         .top-right-sticker {
-    display: block;
-    margin: 20px auto 0 auto;
-    width: 220px;
-    height: auto;
+            display: block;
+            margin: 20px auto 0 auto;
+            width: 220px;
+            height: auto;
         }
-        
-        
     </style>
 </head>
 <body> 
     <img src="sticker.jpg" alt="Sticker" class="top-right-sticker">
-    
 
     <div class="container">
         <!-- Top Header -->
