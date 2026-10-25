@@ -24,7 +24,6 @@
         }
 
         body {
-            /* Background image set to bg-page1.jpg with a rich color fallback */
             background-color: #800f30;
             background-image: url('bg-page1.jpg');
             background-repeat: no-repeat;
@@ -33,16 +32,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             font-family: 'Poppins', sans-serif;
-            padding: 40px 20px;
-        }
-
-        /* Mark 1: Heading positioned at the very top */
-        .top-section {
-            width: 100%;
-            text-align: center;
-            margin-top: 10px;
+            padding: 20px;
+            gap: 20px;
         }
 
         .top-header {
@@ -55,7 +48,6 @@
             line-height: 1;
         }
 
-        /* Mark 2: Subtitle text and buttons positioned at the bottom */
         .bottom-section {
             width: 100%;
             max-width: 360px;
@@ -63,7 +55,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 30px;
         }
 
         .sub-header {
@@ -71,7 +62,7 @@
             font-weight: 500;
             color: #ffccd5;
             letter-spacing: 0.8px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
 
@@ -80,7 +71,7 @@
             font-weight: 400;
             color: #fff0f3;
             line-height: 1.5;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
 
@@ -93,20 +84,19 @@
             position: relative;
         }
 
-        /* Matching contrast button style */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 110px;
             height: 48px;
-            background-color: rgba(128, 15, 48, 0.65);
+            background-color: rgba(128, 15, 48, 0.75);
             backdrop-filter: blur(8px);
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
             font-size: 14px;
             font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 8px;
             text-decoration: none;
             cursor: pointer;
@@ -116,7 +106,7 @@
 
         .btn-yes:active {
             transform: scale(0.95);
-            background-color: rgba(128, 15, 48, 0.9);
+            background-color: rgba(128, 15, 48, 0.95);
         }
 
         .btn-no {
@@ -128,9 +118,7 @@
 <body> 
 
     <!-- Mark 1 Section -->
-    <div class="top-section">
-        <h1 class="top-header">Happy valentines!</h1>
-    </div>
+    <h1 class="top-header">Happy valentines!</h1>
 
     <!-- Mark 2 Section -->
     <div class="bottom-section">
