@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter Cover 💌</title>
-    <!-- Fonts matching the vintage photo style: Cursive for Main Title, Typewriter for From/To -->
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
         * {
@@ -15,186 +14,186 @@
 
         html, body {
             width: 100%;
-            height: 100vh;
-            height: 100dvh;
-            overflow: hidden;
-            font-family: 'Courier Prime', monospace;
+            min-height: 100vh;
+            min-height: 100dvh;
         }
 
-        /* Full Screen Vintage Envelope Container */
+        /* Page Background using hearts/kiss image */
         body {
-            background-color: #f4eae1;
-            /* Vintage parchment texture background */
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(244, 234, 225, 0.8), rgba(218, 198, 178, 0.9)),
-                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+            font-family: 'Courier Prime', monospace;
+            background-color: #8c2848;
+            background-image: url('./Bg1-page3.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            padding: 20px;
         }
 
-        .envelope-cover {
+        /* Main outer frame box */
+        .page-frame {
             position: relative;
             width: 100%;
-            max-width: 480px;
-            height: 92vh;
-            max-height: 720px;
-            background: #f7eee4;
-            /* Matching deep maroon outline border */
+            max-width: 380px;
+            background: rgba(247, 238, 228, 0.95);
             border: 3px solid #6b1d28;
-            box-shadow: inset 0 0 30px rgba(107, 29, 40, 0.12), 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 20px 15px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 25px 20px;
-            overflow: hidden;
+            min-height: 540px;
         }
 
-        /* Vintage V-Shape Flap Overlay Lines */
-        .v-flap-lines {
+        /* Top Header containing separate vintage boxes for FROM and TO */
+        .top-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        /* Chhote vintage boxes for address clarity */
+        .vintage-tag {
+            background: #f4eae1;
+            border: 1.5px solid #6b1d28;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 10px;
+            line-height: 1.4;
+            font-weight: 700;
+            color: #5a141e;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(107, 29, 40, 0.1);
+            width: 48%;
+        }
+
+        .from-box {
+            text-align: left;
+        }
+
+        .to-box {
+            text-align: right;
+        }
+
+        /* Center Vintage Envelope Box */
+        .envelope-box {
+            position: relative;
+            width: 100%;
+            background: #f4eae1;
+            border: 2px solid #6b1d28;
+            border-radius: 8px;
+            padding: 35px 15px 25px 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(107, 29, 40, 0.15);
+        }
+
+        /* V-Flap SVG Lines inside the envelope box */
+        .v-flap {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 48%;
+            height: 100%;
             pointer-events: none;
         }
 
-        .v-flap-lines svg {
+        .v-flap svg {
             width: 100%;
             height: 100%;
         }
 
-        /* Top Header Details: FROM (Left) & TO (Right) */
-        .envelope-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            z-index: 2;
-            color: #5a141e;
-            font-size: 13px;
-            line-height: 1.5;
-            font-weight: 700;
-        }
-
-        .from-section {
-            text-align: left;
-            text-transform: uppercase;
-        }
-
-        .to-section {
-            text-align: right;
-            text-transform: uppercase;
-        }
-
-        /* Center Content: Main Cursive Title & Subtitle */
-        .envelope-center {
-            text-align: center;
-            z-index: 2;
-            margin-top: -30px;
-        }
-
-        .main-cursive-title {
+        /* Text inside the envelope box */
+        .main-title {
             font-family: 'Alex Brush', cursive;
-            font-size: 52px;
+            font-size: 38px;
             color: #6b1d28;
             line-height: 1.1;
-            margin-bottom: 5px;
-            text-shadow: 0 1px 1px rgba(107, 29, 40, 0.15);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
         }
 
-        .sub-flap-text {
+        .sub-title {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 18px;
+            font-size: 15px;
             color: #6b1d28;
-            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Wax Seal Button at V-Flap Point */
-        .seal-container {
+        /* Wax Seal Button at the bottom pointing to Page 6 */
+        .seal-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 3;
-            margin-bottom: 40px;
+            margin-bottom: 5px;
         }
 
-        .wax-seal-btn {
+        .wax-seal {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 72px;
-            height: 72px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             background: radial-gradient(circle at 35% 35%, #8c2848, #5a141e 80%);
             border: 2px solid #3d0a13;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3);
             color: #f7eee4;
-            font-size: 28px;
+            font-size: 22px;
             cursor: pointer;
             text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease;
         }
 
-        .wax-seal-btn:active {
+        .wax-seal:active {
             transform: scale(0.92);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Responsive adjustments for mobile screens */
-        @media (max-width: 400px) {
-            .envelope-header {
-                font-size: 11px;
-            }
-            .main-cursive-title {
-                font-size: 42px;
-            }
-            .sub-flap-text {
-                font-size: 16px;
-            }
-            .wax-seal-btn {
-                width: 64px;
-                height: 64px;
-                font-size: 24px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <div class="envelope-cover">
+    <div class="page-frame">
         
-        <!-- V-Flap Vintage SVG Outline Overlay -->
-        <div class="v-flap-lines">
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                <path d="M0,0 L50,85 L100,0" fill="none" stroke="#6b1d28" stroke-width="0.8" opacity="0.4" />
-                <path d="M0,0 L50,86 L100,0" fill="none" stroke="#5a141e" stroke-width="0.4" opacity="0.2" />
-            </svg>
-        </div>
-
-        <!-- Top Header Details -->
-        <div class="envelope-header">
-            <div class="from-section">
-                <div>FROM: Putur Babiee</div>
-                <div>Date: 14-02</div>
-                <div>Putur's heart</div>
+        <!-- Top Info with separate small vintage boxes for From & To -->
+        <div class="top-info">
+            <div class="vintage-tag from-box">
+                <div>FROM:</div>
+                <div>PUTUR BABIEE</div>
+                <div>DATE: 14-02</div>
+                <div>PUTUR'S HEART</div>
             </div>
-            <div class="to-section">
-                <div>TO: My only khutur babie.</div>
+            <div class="vintage-tag to-box">
+                <div>TO:</div>
+                <div>MY ONLY</div>
+                <div>KHUTUR BABIE</div>
             </div>
         </div>
 
-        <!-- Center Cursive Title & Subheading -->
-        <div class="envelope-center">
-            <h1 class="main-cursive-title">Letter for my khutur</h1>
-            <div class="sub-flap-text">Happy Valentines</div>
+        <!-- Center Envelope Box with V-Flap and Text -->
+        <div class="envelope-box">
+            <div class="v-flap">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M0,0 L50,70 L100,0" fill="none" stroke="#6b1d28" stroke-width="1.2" opacity="0.5" />
+                </svg>
+            </div>
+
+            <h1 class="main-title">Letter for my khutur</h1>
+            <div class="sub-title">Happy Valentines</div>
         </div>
 
-        <!-- Maroon Wax Seal Button linking to Page 6 -->
-        <div class="seal-container">
-            <a href="page6.html" class="wax-seal-btn" title="Open Letter">💌</a>
+        <!-- Wax Seal Button at the bottom linking to Page 6 -->
+        <div class="seal-wrapper">
+            <a href="page6.html" class="wax-seal" title="Open Page 6">💌</a>
         </div>
 
     </div>
