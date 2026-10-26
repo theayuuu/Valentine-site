@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You 💌</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+
+      background-color: #8c2848;
+      background-image: url("./Bg1-page3.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .letter-wrap {
+      position: relative;
+      display: inline-block;
+      width: min(78vw, 360px);
+      max-height: 85dvh;
+      padding: 0;
+      margin: 0;
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      outline: none;
+    }
+
+    .letter-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 85dvh;
+      object-fit: contain;
+
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      outline: none;
+    }
+
+    .heart-seal-btn {
+      position: absolute;
+      top: 51%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 55px;
+      height: 55px;
+
+      display: block;
+      background: transparent;
+      border: none;
+      border-radius: 50%;
+      box-shadow: none;
+
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="letter-wrap">
+    <img
+      src="./Loveletteroriginal.jpg"
+      alt="Love letter"
+      class="letter-img"
+    >
+
+    <a
+      href="page6.html"
+      class="heart-seal-btn"
+      aria-label="Open the letter"
+    ></a>
+  </div>
+
+</body>
+</html>
