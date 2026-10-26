@@ -40,36 +40,35 @@
             font-size: 15px;
             font-weight: 400;
             color: #ffffff;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
             letter-spacing: 0.5px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-            background: transparent !important;
-            box-shadow: none !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Pure image container without any background box */
-        .letter-wrapper {
+        /* Pure Letter Wrapper Container - Strictly no background box */
+        .letter-container {
             position: relative;
             width: 100%;
-            max-width: 350px;
+            max-width: 340px;
             display: flex;
             justify-content: center;
             align-items: center;
             background: transparent !important;
-            background-color: transparent !important;
-            box-shadow: none !important;
             border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
-        /* Love letter image with maroon outline border */
+        /* Love letter image with rich solid Maroon outline border all around */
         .envelope-img {
             width: 100%;
             height: auto;
             display: block;
             border-radius: 12px;
-            border: 3px solid #5a141e;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            border: 3.5px solid #5a141e !important; /* Maroon border around letter */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
         }
 
         /* Invisible clickable button placed exactly over the red heart seal */
@@ -100,7 +99,8 @@
     <!-- Minimal heading -->
     <div class="tap-heading">Tap the seal to open the letter 🙈</div>
 
-    <div class="letter-wrapper">
+    <!-- Direct Letter Container without outer glass card wrapper -->
+    <div class="letter-container">
         <!-- Letter image with maroon border -->
         <img src="./Loveletteroriginal.jpg" alt="Love Letter Envelope" class="envelope-img">
 
