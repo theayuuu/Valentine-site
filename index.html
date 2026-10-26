@@ -12,35 +12,35 @@
       padding: 0;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       height: 100%;
       overflow: hidden;
     }
 
     body {
-      min-height: 100vh;
-      min-height: 100dvh;
+      height: 100vh;
+      height: 100dvh;
+      width: 100%;
 
-      /* Your complete background image with all text */
-      background-color: #8e3448;
-      background-image: url('./Bg2page1.jpg');
+      /* Exact image filename from GitHub */
+      background-color: #a96e77;
+      background-image: url('./Bg3-page1.png');
       background-repeat: no-repeat;
       background-position: center center;
-      background-size: contain;
-
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
+      background-size: 100% 100%;
 
       position: relative;
+      font-family: Arial, sans-serif;
     }
 
-    /* Buttons placed below your existing text */
+    /* Buttons only — no visible container or box */
+
     .btn-container {
       position: absolute;
       left: 50%;
-      bottom: 11%;
+      bottom: 9%;
       transform: translateX(-50%);
 
       display: flex;
@@ -50,36 +50,35 @@
 
       width: max-content;
       max-width: 100%;
-      padding: 8px;
     }
 
     .btn {
       width: 110px;
       height: 48px;
 
-      display: inline-flex;
-      align-items: center;
+      display: flex;
       justify-content: center;
+      align-items: center;
 
-      border: 1px solid rgba(255, 210, 220, 0.75);
+      background: rgba(105, 13, 45, 0.88);
+      color: #fff0f4;
+
+      border: 1px solid rgba(255, 210, 220, 0.8);
       border-radius: 10px;
-
-      background: rgba(91, 9, 34, 0.78);
-      color: #fff1f4;
 
       font-family: Arial, sans-serif;
       font-size: 15px;
       font-weight: 500;
       text-decoration: none;
 
-      box-shadow: 0 4px 14px rgba(60, 0, 20, 0.18);
-      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 12px rgba(75, 0, 25, 0.16);
       cursor: pointer;
+
+      -webkit-tap-highlight-color: transparent;
     }
 
     .btn-yes:active {
       transform: scale(0.96);
-      background: rgba(91, 9, 34, 0.95);
     }
 
     .btn-no {
@@ -103,29 +102,31 @@
 
 <body>
 
-  <div class="btn-container" id="buttonContainer">
-    <a href="page2.html" class="btn btn-yes">Yes</a>
-    <button type="button" class="btn btn-no" id="noBtn">No</button>
+  <!-- Only two buttons -->
+  <div class="btn-container">
+
+    <a href="page2.html" class="btn btn-yes">
+      Yes
+    </a>
+
+    <button type="button" class="btn btn-no" id="noBtn">
+      No
+    </button>
+
   </div>
 
+  <!-- No button dodging effect -->
   <script>
     const noBtn = document.getElementById('noBtn');
 
     function dodgeButton() {
       const padding = 16;
 
-      const maxX = Math.max(
-        padding,
-        window.innerWidth - noBtn.offsetWidth - padding
-      );
+      const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+      const maxY = window.innerHeight - noBtn.offsetHeight - padding;
 
-      const maxY = Math.max(
-        padding,
-        window.innerHeight - noBtn.offsetHeight - padding
-      );
-
-      const x = padding + Math.random() * (maxX - padding);
-      const y = padding + Math.random() * (maxY - padding);
+      const x = padding + Math.random() * Math.max(0, maxX - padding);
+      const y = padding + Math.random() * Math.max(0, maxY - padding);
 
       noBtn.style.position = 'fixed';
       noBtn.style.left = x + 'px';
