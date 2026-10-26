@@ -116,58 +116,52 @@
 
   </div>
 
-  <script>
-    const noBtn = document.getElementById('noBtn');
+<script>
+  const noBtn = document.getElementById('noBtn');
 
-    function dodgeButton(event) {
-      if (event) {
-        event.preventDefault();
-      }
+  function dodgeButton(event) {
+    if (event) event.preventDefault();
 
-      const padding = 16;
-      const buttonWidth = noBtn.offsetWidth;
-      const buttonHeight = noBtn.offsetHeight;
-
-      // Available visible screen area
-      const screenWidth = document.documentElement.clientWidth;
-      const screenHeight = document.documentElement.clientHeight;
-
-      const maxX = Math.max(
-        padding,
-        screenWidth - buttonWidth - padding
-      );
-
-      const maxY = Math.max(
-        padding,
-        screenHeight - buttonHeight - padding
-      );
-
-      // Random position inside the screen
-      const x = padding + Math.random() * (maxX - padding);
-      const y = padding + Math.random() * (maxY - padding);
-
-      // Move only No; keep the rest of the page unchanged
-      noBtn.style.position = 'fixed';
-      noBtn.style.left = x + 'px';
-      noBtn.style.top = y + 'px';
-      noBtn.style.right = 'auto';
-      noBtn.style.bottom = 'auto';
-      noBtn.style.margin = '0';
-      noBtn.style.transform = 'none';
-      noBtn.style.zIndex = '9999';
+    // Move No directly under body, outside the transformed container
+    if (noBtn.parentElement !== document.body) {
+      document.body.appendChild(noBtn);
     }
 
-    // Desktop: dodge when the pointer approaches
-    noBtn.addEventListener('mouseenter', dodgeButton);
+    const padding = 16;
+    const width = noBtn.offsetWidth;
+    const height = noBtn.offsetHeight;
 
-    // Mobile: dodge when touched
-    noBtn.addEventListener('touchstart', dodgeButton, {
-      passive: false
-    });
+    const maxX = Math.max(
+      padding,
+      window.innerWidth - width - padding
+    );
 
-    // Fallback for clicks
-    noBtn.addEventListener('click', dodgeButton);
-  </script>
+    const maxY = Math.max(
+      padding,
+      window.innerHeight - height - padding
+    );
+
+    const x = padding + Math.random() * (maxX - padding);
+    const y = padding + Math.random() * (maxY - padding);
+
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+    noBtn.style.right = 'auto';
+    noBtn.style.bottom = 'auto';
+    noBtn.style.margin = '0';
+    noBtn.style.transform = 'none';
+    noBtn.style.zIndex = '99999';
+  }
+
+  noBtn.addEventListener('mouseenter', dodgeButton);
+
+  noBtn.addEventListener('touchstart', dodgeButton, {
+    passive: false
+  });
+
+  noBtn.addEventListener('click', dodgeButton);
+</script>
 
 </body>
 </html>
