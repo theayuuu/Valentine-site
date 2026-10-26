@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Letter 💌</title>
+    <title>Letter Cover 💌</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,11 +13,12 @@
 
         html, body {
             width: 100%;
-            min-height: 100vh;
-            min-height: 100dvh;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
         }
 
-        /* Full page background with uploaded hearts pattern */
+        /* Background: 1st image (Bg1-page3.jpg) */
         body {
             background-color: #8c2848;
             background-image: url('./Bg1-page3.jpg');
@@ -29,23 +30,22 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow: hidden;
         }
 
-        /* Container matching the black box marked area in reference image */
+        /* Container holding the letter image and the interactive heart seal button */
         .letter-container {
             position: relative;
             width: 100%;
             max-width: 360px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Display the original letter cover image */
+        /* The uploaded letter image (Loveletteroriginal.jpg) */
         .letter-img {
             width: 100%;
             height: auto;
@@ -53,36 +53,36 @@
             border-radius: 12px;
         }
 
-        /* Invisible Button exactly over the printed red heart wax seal */
-        .invisible-seal-btn {
+        /* Invisible clickable button precisely positioned over the heart seal */
+        .heart-seal-btn {
             position: absolute;
-            top: 55%;
+            /* Adjust these percentages if needed based on exact heart position on the image */
+            top: 51%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+            width: 55px;
+            height: 55px;
             background: transparent;
             border: none;
             cursor: pointer;
-            text-decoration: none;
-            /* Optional subtle active tap highlight */
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+            z-index: 10;
+            border-radius: 50%;
         }
 
-        .invisible-seal-btn:active {
-            transform: translate(-50%, -50%) scale(0.92);
+        /* Optional subtle hover effect to feel responsive */
+        .heart-seal-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
         }
     </style>
 </head>
 <body>
 
     <div class="letter-container">
-        <!-- Original Letter Cover Image -->
-        <img src="./Loveletteroriginal.jpg" alt="Love Letter Cover" class="letter-img">
-        
-        <!-- Invisible Clickable Hotspot over the printed Wax Seal linking to Page 6 -->
-        <a href="page6.html" class="invisible-seal-btn" title="Open Letter"></a>
+        <!-- Letter original image -->
+        <img src="./Loveletteroriginal.jpg" alt="Love Letter" class="letter-img">
+
+        <!-- Invisible button right over the heart seal linking to page6.html -->
+        <a href="page6.html" class="heart-seal-btn" title="Open Letter"></a>
     </div>
 
 </body>
