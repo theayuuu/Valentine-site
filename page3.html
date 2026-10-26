@@ -3,118 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jukebox - Valentine's Surprise</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Songs That Remind Me Of You 🎵</title>
+    <!-- Importing Mrs Saint Delafield and Poppins Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
         }
 
         body {
-            width: 100vw;
-            min-height: 100vh;
-            /* Background image for Page 3 */
-            background: url('Bg1-page3'.jpg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             font-family: 'Poppins', sans-serif;
-            padding: 30px 15px;
-            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            /* Full screen uploaded background image */
+            background-color: #8c2848;
+            background-image: url('./Bg1-page3.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+
+            padding: 40px 20px 30px 20px;
+            color: #fff;
+            overflow-y: auto;
         }
 
-        .main-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 340px;
+        .container {
             text-align: center;
+            width: 100%;
+            max-width: 380px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Cursive Header */
+        /* Single line heading with Mrs Saint Delafield font & #720D35 color */
         h1 {
             font-family: 'Mrs Saint Delafield', cursive;
-            font-size: 32px;
+            font-size: 34px;
             color: #720D35;
-            margin-bottom: 25px;
-            font-weight: normal;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+            white-space: nowrap;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
         }
 
-        .btn-group {
-            width: 100%;
+        .song-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            width: 100%;
         }
 
-        /* Song Buttons matching dark background */
+        /* Transparent Glassmorphism Buttons matching page 3 screenshot */
         .song-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            padding: 14px;
-            background-color: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            font-size: 15px;
+            padding: 14px 20px;
+            font-size: 16px;
             font-weight: 500;
+            border-radius: 14px;
+            background: rgba(105, 13, 45, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
             text-decoration: none;
-            display: block;
-            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.15 ease, background-color 0.2s ease;
         }
 
         .song-btn:active {
-            transform: scale(0.97);
-            background-color: rgba(255, 133, 161, 0.4);
+            transform: scale(0.98);
+            background: rgba(105, 13, 45, 0.65);
         }
 
-        /* Simple Divider Line */
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 20px 0;
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 28px;
+            }
+            .song-btn {
+                padding: 12px 16px;
+                font-size: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-content">
-        <!-- Single Line Cursive Header -->
+    <div class="container">
         <h1>Some songs that remind me of you 🧿</h1>
 
-        <!-- 10 Song Buttons Linked to individual pages -->
-        <div class="btn-group">
-            <a href="Songaudio1.html" class="song-btn">Song 1 🎵</a>
-            <a href="Songaudio2.html" class="song-btn">Song 2 🎵</a>
-            <a href="Songaudio3.html" class="song-btn">Song 3 🎵</a>
-            <a href="Songaudio4.html" class="song-btn">Song 4 🎵</a>
-            <a href="Songaudio5.html" class="song-btn">Song 5 🎵</a>
-            <a href="Songaudio6.html" class="song-btn">Song 6 🎵</a>
-            <a href="Songaudio7.html" class="song-btn">Song 7 🎵</a>
-            <a href="Songaudio8.html" class="song-btn">Song 8 🎵</a>
-            <a href="Songaudio9.html" class="song-btn">Song 9 🎵</a>
-            <a href="Songaudio10.html" class="song-btn">Song 10 🎵</a>
-        </div>
-
-        <!-- Plain Soft Line Divider -->
-        <div class="divider"></div>
-
-        <!-- Next Page Button -->
-        <div class="btn-group">
-            <a href="page4.html" class="song-btn">Next surprise 🙈</a>
+        <div class="song-list">
+            <a href="song1.html" class="song-btn">Song 1</a>
+            <a href="song2.html" class="song-btn">Song 2</a>
+            <a href="song3.html" class="song-btn">Song 3</a>
+            <a href="song4.html" class="song-btn">Song 4</a>
+            <a href="song5.html" class="song-btn">Song 5</a>
+            <a href="song6.html" class="song-btn">Song 6</a>
+            <a href="song7.html" class="song-btn">Song 7</a>
+            <a href="song8.html" class="song-btn">Song 8</a>
+            <a href="song9.html" class="song-btn">Song 9</a>
+            <a href="song10.html" class="song-btn">Song 10</a>
         </div>
     </div>
 
