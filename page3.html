@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Songs That Remind Me Of You 🎵</title>
-    <!-- Importing Mrs Saint Delafield and Poppins Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Importing Poppins Font only for a clean, simple look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -49,10 +49,11 @@
             align-items: center;
         }
 
-        /* Single line heading with Mrs Saint Delafield font & #720D35 color */
+        /* Simple straight heading with exact color #720D35 */
         h1 {
-            font-family: 'Mrs Saint Delafield', cursive;
-            font-size: 34px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
             color: #720D35;
             white-space: nowrap;
             margin-bottom: 25px;
@@ -64,16 +65,17 @@
             flex-direction: column;
             gap: 12px;
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
-        /* Transparent Glassmorphism Buttons */
-        .song-btn {
+        /* Identical uniform button style for ALL buttons (Songs & Next Page) */
+        .uniform-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
             padding: 14px 20px;
+            font-family: 'Poppins', sans-serif;
             font-size: 16px;
             font-weight: 500;
             border-radius: 14px;
@@ -88,42 +90,16 @@
             transition: transform 0.15s ease, background-color 0.2s ease;
         }
 
-        .song-btn:active {
+        .uniform-btn:active {
             transform: scale(0.98);
             background: rgba(105, 13, 45, 0.65);
         }
 
-        /* Next Page Button Style */
-        .next-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 14px 20px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 14px;
-            background: rgba(105, 13, 45, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-            transition: transform 0.15s ease, background-color 0.2s ease;
-            margin-top: 5px;
-        }
-
-        .next-btn:active {
-            transform: scale(0.98);
-        }
-
         @media (max-width: 360px) {
             h1 {
-                font-size: 28px;
+                font-size: 18px;
             }
-            .song-btn, .next-btn {
+            .uniform-btn {
                 padding: 12px 16px;
                 font-size: 15px;
             }
@@ -133,22 +109,22 @@
 <body>
 
     <div class="container">
-        <h1>Some songs that remind me of you </h1>
+        <h1>Some songs that remind me of you 🧿</h1>
 
         <div class="song-list">
-            <a href="songaudio1.html" class="song-btn">Song 1</a>
-            <a href="songaudio2.html" class="song-btn">Song 2</a>
-            <a href="songaudio3.html" class="song-btn">Song 3</a>
-            <a href="songaudio4.html" class="song-btn">Song 4</a>
-            <a href="songaudio5.html" class="song-btn">Song 5</a>
-            <a href="songaudio6.html" class="song-btn">Song 6</a>
-            <a href="songaudio7.html" class="song-btn">Song 7</a>
-            <a href="songaudio8.html" class="song-btn">Song 8</a>
-            <a href="songaudio9.html" class="song-btn">Song 9</a>
-            <a href="songaudio10.html" class="song-btn">Song 10</a>
+            <a href="Songaudio1.html" class="uniform-btn">Song 1</a>
+            <a href="Songaudio2.html" class="uniform-btn">Song 2</a>
+            <a href="Songaudio3.html" class="uniform-btn">Song 3</a>
+            <a href="Songaudio4.html" class="uniform-btn">Song 4</a>
+            <a href="Songaudio5.html" class="uniform-btn">Song 5</a>
+            <a href="Songaudio6.html" class="uniform-btn">Song 6</a>
+            <a href="Songaudio7.html" class="uniform-btn">Song 7</a>
+            <a href="Songaudio8.html" class="uniform-btn">Song 8</a>
+            <a href="Songaudio9.html" class="uniform-btn">Song 9</a>
+            <a href="Songaudio10.html" class="uniform-btn">Song 10</a>
         </div>
 
-        <a href="page4.html" class="next-btn">Next page 🙈</a>
+        <a href="page4.html" class="uniform-btn">Next page 🙈</a>
     </div>
 
 </body>
