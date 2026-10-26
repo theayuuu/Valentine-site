@@ -14,19 +14,20 @@
 
         html, body {
             width: 100%;
-            min-height: 100vh;
-            min-height: 100dvh;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
         }
 
         /* Full page background with the rosy/kiss print image */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #8c2848;
-            background-image: url('./Bg1-page3.jpg');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            background-attachment: fixed;
+            background-color: #8c2848 !important;
+            background-image: url('./Bg1-page3.jpg') !important;
+            background-repeat: no-repeat !important;
+            background-position: center center !important;
+            background-size: cover !important;
+            background-attachment: fixed !important;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -39,31 +40,36 @@
             font-size: 15px;
             font-weight: 400;
             color: #ffffff;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             text-align: center;
             letter-spacing: 0.5px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            background: transparent !important;
+            box-shadow: none !important;
         }
 
-        /* Letter wrapper without any background box */
+        /* Pure image container without any background box */
         .letter-wrapper {
             position: relative;
             width: 100%;
-            max-width: 360px;
+            max-width: 350px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent;
-            box-shadow: none;
+            background: transparent !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
         }
 
-        /* Love letter image */
+        /* Love letter image with maroon outline border */
         .envelope-img {
             width: 100%;
             height: auto;
             display: block;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            border: 3px solid #5a141e;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
         /* Invisible clickable button placed exactly over the red heart seal */
@@ -72,8 +78,8 @@
             bottom: 30.5%;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             background: transparent;
             border: none;
@@ -85,7 +91,7 @@
         }
 
         .invisible-seal-btn:active {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -95,7 +101,7 @@
     <div class="tap-heading">Tap the seal to open the letter 🙈</div>
 
     <div class="letter-wrapper">
-        <!-- Letter image -->
+        <!-- Letter image with maroon border -->
         <img src="./Loveletteroriginal.jpg" alt="Love Letter Envelope" class="envelope-img">
 
         <!-- Invisible button over the heart seal linking to Page 6 -->
