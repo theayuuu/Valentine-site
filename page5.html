@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter Cover 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -19,6 +20,7 @@
 
         /* Full page background with the rosy/kiss print image */
         body {
+            font-family: 'Poppins', sans-serif;
             background-color: #8c2848;
             background-image: url('./Bg1-page3.jpg');
             background-repeat: no-repeat;
@@ -26,30 +28,40 @@
             background-size: cover;
             background-attachment: fixed;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
 
-        /* Envelope Image Container (Compact frame in center) */
-        .envelope-card {
+        /* Minimal font heading above the letter */
+        .tap-heading {
+            font-size: 15px;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Letter wrapper without extra background box */
+        .letter-wrapper {
             position: relative;
             width: 100%;
             max-width: 360px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Love letter image filling the card */
+        /* Love letter image */
         .envelope-img {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 16px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
         }
 
         /* Invisible clickable button placed exactly over the red heart seal */
@@ -70,7 +82,6 @@
             z-index: 10;
         }
 
-        /* Active feedback effect */
         .invisible-seal-btn:active {
             background: rgba(255, 255, 255, 0.15);
         }
@@ -78,11 +89,14 @@
 </head>
 <body>
 
-    <div class="envelope-card">
-        <!-- Updated envelope cover image filename -->
+    <!-- Minimal heading -->
+    <div class="tap-heading">Tap the seal to open the letter 🙈</div>
+
+    <div class="letter-wrapper">
+        <!-- Letter image -->
         <img src="./Loveletteroriginal.jpg" alt="Love Letter Envelope" class="envelope-img">
 
-        <!-- Invisible circle button over the heart seal linking to Page 6 -->
+        <!-- Invisible button over the heart seal linking to Page 6 -->
         <a href="page6.html" class="invisible-seal-btn" title="Open Page 6"></a>
     </div>
 
