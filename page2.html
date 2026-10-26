@@ -55,14 +55,25 @@
             filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
         }
 
+        /* Card box matching the background tone perfectly */
+        .card {
+            background: rgba(92, 6, 32, 0.88);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
         h2 {
             font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            font-size: 18px;
+            font-weight: 600;
+            font-size: 20px;
             color: #ffffff;
             margin-bottom: 25px;
-            line-height: 1.4;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+            line-height: 1.35;
         }
 
         .btn-container {
@@ -75,32 +86,27 @@
             position: relative;
         }
 
-        /* Completely transparent glassmorphism buttons with zero fill color */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 28px;
-            font-size: 15px;
-            font-weight: 500;
-            border-radius: 12px;
-            background: transparent;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 10px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
             cursor: pointer;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.1s ease, background-color 0.2s ease;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-yes:active {
-            transform: scale(0.95);
-            background: rgba(255, 255, 255, 0.15);
+        .btn-yes {
+            background-color: #ff5c8a;
+            color: white;
         }
 
         .btn-no {
+            background-color: #590d22;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             touch-action: none;
             user-select: none;
             -webkit-user-select: none;
@@ -112,24 +118,21 @@
             height: auto;
             margin: 0 auto 20px auto;
             border-radius: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            border: 3px solid #800f30;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
             display: block;
-            background: rgba(255, 255, 255, 0.9);
+            background: #fff;
         }
 
         .btn-surprise {
-            background: transparent;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: #ff5c8a;
             color: white;
-            font-size: 14px;
+            font-size: 15px;
             padding: 12px 20px;
             margin-top: 15px;
-            border-radius: 12px;
+            border-radius: 10px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-decoration: none;
         }
     </style>
@@ -139,11 +142,13 @@
     <div class="container" id="mainContainer">
         <img src="sticker2.jpg" alt="Sticker" class="top-sticker">
 
-        <h2>First tell me do you love me?</h2>
-        
-        <div class="btn-container">
-            <button class="btn btn-yes" id="yesBtn" onclick="sayYes()">Yes</button>
-            <button class="btn btn-no" id="noBtn" onclick="handleNoClick()">No</button>
+        <div class="card">
+            <h2>First tell me do you love me?</h2>
+            
+            <div class="btn-container">
+                <button class="btn btn-yes" id="yesBtn" onclick="sayYes()">Yes</button>
+                <button class="btn btn-no" id="noBtn" onclick="handleNoClick()">No</button>
+            </div>
         </div>
     </div>
 
@@ -179,9 +184,11 @@
         function sayYes() {
             const container = document.getElementById('mainContainer');
             container.innerHTML = `
-                <img src="Love1.gif" alt="Cute GIF" class="gif-frame">
-                <h2>I knew it my khuchupuchu, I love you tooo&lt;3 💋</h2>
-                <a href="page3.html" class="btn btn-surprise">🙈 Click for more surprises, Bubu.</a>
+                <div class="card">
+                    <img src="Love1.gif" alt="Cute GIF" class="gif-frame">
+                    <h2>I knew it my khuchupuchu, I love you tooo&lt;3 💋</h2>
+                    <a href="page3.html" class="btn btn-surprise">🙈 Click for more surprises, Bubu.</a>
+                </div>
             `;
         }
     </script>
