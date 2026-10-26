@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letter Cover 💌</title>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -18,9 +17,8 @@
             min-height: 100dvh;
         }
 
-        /* Page Background using hearts/kiss image */
+        /* Full page background with the rosy/kiss print image */
         body {
-            font-family: 'Courier Prime', monospace;
             background-color: #8c2848;
             background-image: url('./Bg1-page3.jpg');
             background-repeat: no-repeat;
@@ -28,174 +26,64 @@
             background-size: cover;
             background-attachment: fixed;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
 
-        /* Main outer frame box */
-        .page-frame {
+        /* Envelope Image Container (Compact frame in center) */
+        .envelope-card {
             position: relative;
             width: 100%;
-            max-width: 380px;
-            background: rgba(247, 238, 228, 0.95);
-            border: 3px solid #6b1d28;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            padding: 20px 15px;
+            max-width: 360px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 540px;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Top Header containing separate vintage boxes for FROM and TO */
-        .top-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 10px;
-            z-index: 2;
-        }
-
-        /* Chhote vintage boxes for address clarity */
-        .vintage-tag {
-            background: #f4eae1;
-            border: 1.5px solid #6b1d28;
-            border-radius: 6px;
-            padding: 8px 10px;
-            font-size: 10px;
-            line-height: 1.4;
-            font-weight: 700;
-            color: #5a141e;
-            text-transform: uppercase;
-            box-shadow: 0 2px 5px rgba(107, 29, 40, 0.1);
-            width: 48%;
-        }
-
-        .from-box {
-            text-align: left;
-        }
-
-        .to-box {
-            text-align: right;
-        }
-
-        /* Center Vintage Envelope Box */
-        .envelope-box {
-            position: relative;
+        /* Love letter image filling the card */
+        .envelope-img {
             width: 100%;
-            background: #f4eae1;
-            border: 2px solid #6b1d28;
-            border-radius: 8px;
-            padding: 35px 15px 25px 15px;
-            text-align: center;
-            margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(107, 29, 40, 0.15);
+            height: auto;
+            display: block;
+            border-radius: 16px;
         }
 
-        /* V-Flap SVG Lines inside the envelope box */
-        .v-flap {
+        /* Invisible clickable button placed exactly over the red heart seal */
+        .invisible-seal-btn {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .v-flap svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Text inside the envelope box */
-        .main-title {
-            font-family: 'Alex Brush', cursive;
-            font-size: 38px;
-            color: #6b1d28;
-            line-height: 1.1;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .sub-title {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 15px;
-            color: #6b1d28;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Wax Seal Button at the bottom pointing to Page 6 */
-        .seal-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        .wax-seal {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 55px;
-            height: 55px;
+            bottom: 30.5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, #8c2848, #5a141e 80%);
-            border: 2px solid #3d0a13;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3);
-            color: #f7eee4;
-            font-size: 22px;
+            background: transparent;
+            border: none;
+            outline: none;
             cursor: pointer;
             text-decoration: none;
-            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            z-index: 10;
         }
 
-        .wax-seal:active {
-            transform: scale(0.92);
+        /* Active feedback effect */
+        .invisible-seal-btn:active {
+            background: rgba(255, 255, 255, 0.15);
         }
     </style>
 </head>
 <body>
 
-    <div class="page-frame">
-        
-        <!-- Top Info with separate small vintage boxes for From & To -->
-        <div class="top-info">
-            <div class="vintage-tag from-box">
-                <div>FROM:</div>
-                <div>PUTUR BABIEE</div>
-                <div>DATE: 14-02</div>
-                <div>PUTUR'S HEART</div>
-            </div>
-            <div class="vintage-tag to-box">
-                <div>TO:</div>
-                <div>MY ONLY</div>
-                <div>KHUTUR BABIE</div>
-            </div>
-        </div>
+    <div class="envelope-card">
+        <!-- The envelope cover image with text and seal -->
+        <img src="./Loveletter.png" alt="Love Letter Envelope" class="envelope-img">
 
-        <!-- Center Envelope Box with V-Flap and Text -->
-        <div class="envelope-box">
-            <div class="v-flap">
-                <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M0,0 L50,70 L100,0" fill="none" stroke="#6b1d28" stroke-width="1.2" opacity="0.5" />
-                </svg>
-            </div>
-
-            <h1 class="main-title">Letter for my khutur</h1>
-            <div class="sub-title">Happy Valentines</div>
-        </div>
-
-        <!-- Wax Seal Button at the bottom linking to Page 6 -->
-        <div class="seal-wrapper">
-            <a href="page6.html" class="wax-seal" title="Open Page 6">💌</a>
-        </div>
-
+        <!-- Invisible circle button over the heart seal linking to Page 6 -->
+        <a href="page6.html" class="invisible-seal-btn" title="Open Page 6"></a>
     </div>
 
 </body>
