@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letter Cover 💌</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <title>Love Letter 💌</title>
     <style>
         * {
             box-sizing: border-box;
@@ -14,98 +13,76 @@
 
         html, body {
             width: 100%;
-            height: 100vh;
-            height: 100dvh;
-            overflow: hidden;
+            min-height: 100vh;
+            min-height: 100dvh;
         }
 
-        /* Full page background with the rosy/kiss print image */
+        /* Full page background with uploaded hearts pattern */
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #8c2848 !important;
-            background-image: url('./Bg1-page3.jpg') !important;
-            background-repeat: no-repeat !important;
-            background-position: center center !important;
-            background-size: cover !important;
-            background-attachment: fixed !important;
+            background-color: #8c2848;
+            background-image: url('./Bg1-page3.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow: hidden;
         }
 
-        /* Minimal font heading above the letter */
-        .tap-heading {
-            font-size: 15px;
-            font-weight: 400;
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-align: center;
-            letter-spacing: 0.5px;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Pure Letter Wrapper Container - Strictly no background box */
+        /* Container matching the black box marked area in reference image */
         .letter-container {
             position: relative;
             width: 100%;
-            max-width: 340px;
+            max-width: 360px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
         }
 
-        /* Love letter image with rich solid Maroon outline border all around */
-        .envelope-img {
+        /* Display the original letter cover image */
+        .letter-img {
             width: 100%;
             height: auto;
             display: block;
             border-radius: 12px;
-            border: 3.5px solid #5a141e !important; /* Maroon border around letter */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
         }
 
-        /* Invisible clickable button placed exactly over the red heart seal */
+        /* Invisible Button exactly over the printed red heart wax seal */
         .invisible-seal-btn {
             position: absolute;
-            bottom: 30.5%;
+            top: 55%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 55px;
-            height: 55px;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background: transparent;
             border: none;
-            outline: none;
             cursor: pointer;
             text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
-            z-index: 10;
+            /* Optional subtle active tap highlight */
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
         }
 
         .invisible-seal-btn:active {
-            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%) scale(0.92);
         }
     </style>
 </head>
 <body>
 
-    <!-- Minimal heading -->
-    <div class="tap-heading">Tap the seal to open the letter 🙈</div>
-
-    <!-- Direct Letter Container without outer glass card wrapper -->
     <div class="letter-container">
-        <!-- Letter image with maroon border -->
-        <img src="./Loveletteroriginal.jpg" alt="Love Letter Envelope" class="envelope-img">
-
-        <!-- Invisible button over the heart seal linking to Page 6 -->
-        <a href="page6.html" class="invisible-seal-btn" title="Open Page 6"></a>
+        <!-- Original Letter Cover Image -->
+        <img src="./Loveletteroriginal.jpg" alt="Love Letter Cover" class="letter-img">
+        
+        <!-- Invisible Clickable Hotspot over the printed Wax Seal linking to Page 6 -->
+        <a href="page6.html" class="invisible-seal-btn" title="Open Letter"></a>
     </div>
 
 </body>
