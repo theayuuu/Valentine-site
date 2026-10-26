@@ -18,7 +18,7 @@
             overflow: hidden;
         }
 
-        /* Background: 1st image (Bg1-page3.jpg) */
+        /* Background image */
         body {
             background-color: #8c2848;
             background-image: url('./Bg1-page3.jpg');
@@ -29,34 +29,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
-        /* Container holding the letter image and the interactive heart seal button */
-        .letter-container {
-            position: relative;
-            width: 100%;
-            max-width: 360px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* The uploaded letter image (Loveletteroriginal.jpg) */
+        /* Direct Letter Image */
         .letter-img {
             width: 100%;
+            max-width: 360px;
             height: auto;
             display: block;
             border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            position: relative;
         }
 
-        /* Invisible clickable button precisely positioned over the heart seal */
+        /* Invisible clickable button over the heart seal */
         .heart-seal-btn {
             position: absolute;
-            /* Adjust these percentages if needed based on exact heart position on the image */
             top: 51%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -68,20 +57,13 @@
             z-index: 10;
             border-radius: 50%;
         }
-
-        /* Optional subtle hover effect to feel responsive */
-        .heart-seal-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
     </style>
 </head>
 <body>
 
-    <div class="letter-container">
-        <!-- Letter original image -->
+    <!-- Direct image with the clickable button -->
+    <div style="position: relative; display: inline-block; width: 100%; max-width: 360px; text-align: center;">
         <img src="./Loveletteroriginal.jpg" alt="Love Letter" class="letter-img">
-
-        <!-- Invisible button right over the heart seal linking to page6.html -->
         <a href="page6.html" class="heart-seal-btn" title="Open Letter"></a>
     </div>
 
