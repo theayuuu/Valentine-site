@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Songs That Remind Me Of You 🧿</title>
+    <title>Songs That Remind Me Of You 🎵</title>
     <!-- Importing Mrs Saint Delafield and Poppins Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -35,7 +35,7 @@
             background-size: cover;
             background-attachment: fixed;
 
-            padding: 40px 20px 30px 20px;
+            padding: 40px 20px 40px 20px;
             color: #fff;
             overflow-y: auto;
         }
@@ -55,7 +55,7 @@
             font-size: 34px;
             color: #720D35;
             white-space: nowrap;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
         }
 
@@ -64,9 +64,10 @@
             flex-direction: column;
             gap: 12px;
             width: 100%;
+            margin-bottom: 20px;
         }
 
-        /* Transparent Glassmorphism Buttons matching page 3 screenshot */
+        /* Transparent Glassmorphism Buttons */
         .song-btn {
             display: flex;
             align-items: center;
@@ -84,7 +85,7 @@
             cursor: pointer;
             text-decoration: none;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            transition: transform 0.15 ease, background-color 0.2s ease;
+            transition: transform 0.15s ease, background-color 0.2s ease;
         }
 
         .song-btn:active {
@@ -92,11 +93,37 @@
             background: rgba(105, 13, 45, 0.65);
         }
 
+        /* Next Page Button Style */
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 14px;
+            background: rgba(105, 13, 45, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            transition: transform 0.15s ease, background-color 0.2s ease;
+            margin-top: 5px;
+        }
+
+        .next-btn:active {
+            transform: scale(0.98);
+        }
+
         @media (max-width: 360px) {
             h1 {
                 font-size: 28px;
             }
-            .song-btn {
+            .song-btn, .next-btn {
                 padding: 12px 16px;
                 font-size: 15px;
             }
@@ -106,20 +133,22 @@
 <body>
 
     <div class="container">
-        <h1>Some songs that remind me of you 🧿</h1>
+        <h1>Some songs that remind me of you </h1>
 
         <div class="song-list">
-            <a href="song1.html" class="song-btn">Song 1</a>
-            <a href="song2.html" class="song-btn">Song 2</a>
-            <a href="song3.html" class="song-btn">Song 3</a>
-            <a href="song4.html" class="song-btn">Song 4</a>
-            <a href="song5.html" class="song-btn">Song 5</a>
-            <a href="song6.html" class="song-btn">Song 6</a>
-            <a href="song7.html" class="song-btn">Song 7</a>
-            <a href="song8.html" class="song-btn">Song 8</a>
-            <a href="song9.html" class="song-btn">Song 9</a>
-            <a href="song10.html" class="song-btn">Song 10</a>
+            <a href="songaudio1.html" class="song-btn">Song 1</a>
+            <a href="songaudio2.html" class="song-btn">Song 2</a>
+            <a href="songaudio3.html" class="song-btn">Song 3</a>
+            <a href="songaudio4.html" class="song-btn">Song 4</a>
+            <a href="songaudio5.html" class="song-btn">Song 5</a>
+            <a href="songaudio6.html" class="song-btn">Song 6</a>
+            <a href="songaudio7.html" class="song-btn">Song 7</a>
+            <a href="songaudio8.html" class="song-btn">Song 8</a>
+            <a href="songaudio9.html" class="song-btn">Song 9</a>
+            <a href="songaudio10.html" class="song-btn">Song 10</a>
         </div>
+
+        <a href="page4.html" class="next-btn">Next page 🙈</a>
     </div>
 
 </body>
