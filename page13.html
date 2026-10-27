@@ -11,6 +11,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            touch-action: none;
         }
 
         html, body {
@@ -36,24 +37,24 @@
             position: relative;
         }
 
-        /* Scratch Card Container */
+        /* Scratch Card Wrapper */
         .scratch-card-wrapper {
             position: relative;
-            width: 300px;
-            height: 300px;
-            border-radius: 20px;
+            width: 320px;
+            height: 320px;
+            border-radius: 22px;
             overflow: hidden;
             box-shadow: 0 12px 30px rgba(0,0,0,0.3);
             animation: popUpModal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             border: 2px solid rgba(255, 255, 255, 0.4);
-            background: rgba(255, 245, 247, 0.92);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 245, 247, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
         }
 
@@ -64,24 +65,26 @@
 
         .secret-text {
             color: #4a151b;
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 22px;
+            line-height: 1.6;
         }
 
         .inner-click-btn {
             background: rgba(74, 21, 27, 0.9);
             color: #fff5f7;
             border: none;
-            padding: 10px 24px;
+            padding: 12px 28px;
             border-radius: 20px;
             font-family: 'Poppins', sans-serif;
-            font-size: 12px;
+            font-size: 12.5px;
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .inner-click-btn:hover {
@@ -89,111 +92,16 @@
             transform: translateY(-2px);
         }
 
-        /* Interactive Scratch Layer on top */
-        .scratch-overlay-layer {
+        /* Scratchable Overlay Layer */
+        #scratchCanvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #b56576;
-            color: #fff5f7;
-            font-size: 18px;
-            font-weight: 700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
             z-index: 10;
-            transition: opacity 0.5s ease;
-            user-select: none;
-        }
-
-        .scratch-overlay-layer.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Final Grand Proposal Container */
-        .proposal-container {
-            position: absolute;
-            width: 90%;
-            max-width: 340px;
-            background: rgba(255, 245, 247, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 2px solid rgba(74, 21, 27, 0.3);
-            border-radius: 22px;
-            padding: 28px 20px;
-            text-align: center;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            z-index: 5;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .proposal-container.show {
-            display: flex;
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .proposal-title {
-            color: #4a151b;
-            font-size: 15px;
-            font-weight: 700;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .proposal-btns {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            align-items: center;
-            position: relative;
-            min-height: 100px;
-        }
-
-        .yes-proposal-btn {
-            background: rgba(74, 21, 27, 0.9);
-            color: #fff5f7;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 20px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
             cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            width: 100%;
-            text-align: center;
-        }
-
-        .yes-proposal-btn:hover {
-            background: #4a151b;
-            transform: translateY(-2px);
-        }
-
-        .no-proposal-btn {
-            background: rgba(255, 255, 255, 0.8);
-            color: #4a151b;
-            border: 1px solid rgba(74, 21, 27, 0.3);
-            padding: 10px 18px;
             border-radius: 20px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 11.5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            position: relative;
         }
     </style>
 </head>
@@ -201,62 +109,83 @@
 
     <!-- Scratch Card Box -->
     <div class="scratch-card-wrapper" id="scratchCardWrapper">
-        <div class="scratch-overlay-layer" id="scratchLayer" onclick="scratchCardAway()">Scratch</div>
         <div class="card-secret-content">
-            <div class="secret-text">Scratch to reveal a secret surprise just for you, my love</div>
-            <button class="inner-click-btn" onclick="revealProposal()">Click</button>
+            <div style="font-size: 38px; margin-bottom: 12px;">💍❤️🧿</div>
+            <div class="secret-text">
+                Will you be my valentine and forever? 💌
+            </div>
+            <a href="page14.html" class="inner-click-btn">Click 🙈</a>
         </div>
-    </div>
-
-    <!-- Final Proposal Container -->
-    <div class="proposal-container" id="proposalContainer">
-        <div style="font-size: 35px; margin-bottom: 12px;">💍❤️🧿</div>
-        <div class="proposal-title">
-            Will you be my valentine and forever? 💌
-        </div>
-        <div class="proposal-btns" id="btnContainer">
-            <a href="page14.html" class="yes-proposal-btn">Yes of course my putur baby 🤎</a>
-            <button class="no-proposal-btn" id="noBtn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No, I'm not interested in you.</button>
-        </div>
+        <!-- Scratch Canvas Layer -->
+        <canvas id="scratchCanvas"></canvas>
     </div>
 
     <script>
-        // Scratch action removes overlay
-        function scratchCardAway() {
-            const layer = document.getElementById('scratchLayer');
-            layer.classList.add('hidden');
+        const canvas = document.getElementById('scratchCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas resolution
+        canvas.width = 320;
+        canvas.height = 320;
+
+        // Fill scratch cover color
+        ctx.fillStyle = '#b56576';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Scratch text on cover
+        ctx.fillStyle = '#fff5f7';
+        ctx.font = 'bold 16px Poppins, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('Scratch', canvas.width / 2, canvas.height / 2);
+
+        let isScratching = false;
+
+        function scratch(e) {
+            if (!isScratching) return;
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            
+            if (!clientX || !clientY) return;
+
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
+
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(x, y, 30, 0, Math.PI * 2, false);
+            ctx.fill();
+
+            checkScratchPercentage();
         }
 
-        // Transition from Scratch Card to Proposal Question
-        function revealProposal() {
-            const wrapper = document.getElementById('scratchCardWrapper');
-            const proposal = document.getElementById('proposalContainer');
+        // Auto-clear if mostly scratched
+        function checkScratchPercentage() {
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            let transparentPixels = 0;
+            const totalPixels = imageData.data.length / 4;
 
-            wrapper.style.transition = 'all 0.5s ease';
-            wrapper.style.transform = 'scale(0)';
-            wrapper.style.opacity = '0';
+            for (let i = 3; i < imageData.data.length; i += 4) {
+                if (imageData.data[i] < 128) {
+                    transparentPixels++;
+                }
+            }
 
-            setTimeout(() => {
-                wrapper.style.display = 'none';
-                proposal.classList.add('show');
-            }, 400);
+            if (transparentPixels / totalPixels > 0.45) {
+                canvas.style.transition = 'opacity 0.5s ease';
+                canvas.style.opacity = '0';
+                setTimeout(() => canvas.style.display = 'none', 500);
+            }
         }
 
-        // Dodge logic for No button
-        function moveNoButton() {
-            const btn = document.getElementById('noBtn');
-            const container = document.getElementById('btnContainer');
-            
-            const maxX = container.clientWidth - btn.clientWidth;
-            const maxY = 50;
-            
-            const randomX = Math.floor(Math.random() * Math.max(maxX, 40)) - (maxX / 2);
-            const randomY = (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * maxY);
-            
-            btn.style.position = 'relative';
-            btn.style.left = randomX + 'px';
-            btn.style.top = randomY + 'px';
-        }
+        canvas.addEventListener('mousedown', () => isScratching = true);
+        canvas.addEventListener('mousemove', scratch);
+        window.addEventListener('mouseup', () => isScratching = false);
+
+        canvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); });
+        canvas.addEventListener('touchmove', scratch);
+        window.addEventListener('touchend', () => isScratching = false);
     </script>
 </body>
 </html>
