@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter - Page 7 💌</title>
+    <!-- Google Font: Courier Prime for Vintage Typewriter Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        /* Background image updated to Bg1-page7.jpg */
+        body {
+            background-color: #8c2848;
+            background-image: url('./Bg1-page7.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        /* Container positioned perfectly over the background paper area */
+        .letter-container {
+            position: relative;
+            width: 100%;
+            max-width: 330px;
+            height: 72vh;
+            max-height: 540px;
+            padding: 55px 22px 20px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Typewriter font & rich brown ink text styling */
+        .letter-text {
+            color: #4a151b; /* Rich Brown Ink */
+            font-size: 11px;
+            line-height: 1.7;
+            font-weight: 700;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            max-height: 440px;
+            padding-right: 5px;
+            
+            /* Typewriter fade-in animation */
+            animation: fadeInText 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom subtle scrollbar */
+        .letter-text::-webkit-scrollbar {
+            width: 3px;
+        }
+        .letter-text::-webkit-scrollbar-thumb {
+            background: rgba(74, 21, 27, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Navigation Container */
+        .nav-container {
+            text-align: right;
+            padding-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        /* Blurred Frosted-Glass Next Button */
+        .next-btn {
+            background: rgba(74, 21, 27, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #4a151b;
+            border: 1px solid rgba(74, 21, 27, 0.4);
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 11.5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .next-btn:hover {
+            background: rgba(74, 21, 27, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter-container">
+        <!-- Letter Part 2 (Page 7) -->
+        <div class="letter-text" id="typewriter">You know what? That day... my birthday. Woh mera sabse kharab din hone wala tha, aur main usse kabhi bhi yaad karna nahi chahti. Uss din bohot kuch hua mere saath, and a day before that also...
+
+But the twist? Jiske baare mein mujhe idea bhi nahi था. 🥹 Idk, but I heard your voice on call, and you said, "Happie birthday, Ayushi!" OKAY, THAT WAS SOOO SEXY 😭✨... and cute also. Like, hello??? My heart skipped a beat. That damnn sleepy voice.. ugh.
+Damnnn, that moment... DAMNNN! I remember getting sooo many butterflies in my stomach. 😭 And then, the next day, I saw you on the terrace. You were walking all over, here and there, and the most imp part? YOU WERE RUNNING YOUR HANDS THROUGH YOUR HAIR AGAIN AND AGAIN. 😭🙈✨ And that was sexy tooooo. LIKE, SIR??? WHAT WAS I SUPPOSED TO DO WITH MYSELF??? 😭
+Okay, okay, after that day, I kept thinking about you...</div>
+
+        <!-- Frosted-Glass Next Button linking to Page 8 -->
+        <div class="nav-container">
+            <a href="page8.html" class="next-btn">Next ➔</a>
+        </div>
+    </div>
+
+</body>
+</html>
