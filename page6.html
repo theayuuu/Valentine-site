@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter - Page 6 💌</title>
+    <!-- Google Font: Courier Prime for Vintage Typewriter Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        /* Background image with name requested by Ayuu */
+        body {
+            background-color: #8c2848;
+            background-image: url('./Bg1- page6.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        /* Container positioned perfectly over the background paper area */
+        .letter-container {
+            position: relative;
+            width: 100%;
+            max-width: 330px;
+            height: 72vh;
+            max-height: 540px;
+            padding: 55px 22px 20px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Typewriter font & rich brown ink text styling */
+        .letter-text {
+            color: #4a151b; /* Rich Brown Ink */
+            font-size: 11.5px;
+            line-height: 1.75;
+            font-weight: 700;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            max-height: 440px;
+            padding-right: 5px;
+            
+            /* Typewriter fade-in animation */
+            animation: fadeInText 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom subtle scrollbar */
+        .letter-text::-webkit-scrollbar {
+            width: 3px;
+        }
+        .letter-text::-webkit-scrollbar-thumb {
+            background: rgba(74, 21, 27, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Navigation Container */
+        .nav-container {
+            text-align: right;
+            padding-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        /* Blurred Frosted-Glass Next Button */
+        .next-btn {
+            background: rgba(74, 21, 27, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #4a151b;
+            border: 1px solid rgba(74, 21, 27, 0.4);
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 11.5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .next-btn:hover {
+            background: rgba(74, 21, 27, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter-container">
+        <!-- Letter Part 1 -->
+        <div class="letter-text" id="typewriter">My dearest khutur babiee, my only love.
+Umm, mujhe nahi pata main kaise shuru karoon? Kahaan se shuru karoon?  Because no words ever feel enough when it comes to you, my love. My love, I still don't know how you went from being someone I talked to to becoming my person. You came into my life so unexpectedly, and now you're someone I can't imagine my days without. And honestly? Imagine karte hi dar lagta hai. Idk how to explain it, but itna zyada dar lagta hai. When you said that day, "naah," I was literally shivering. I don't even know how to put that feeling into words, but I guess that's when I realised just how much you mean to me and how scared I am of losing you.</div>
+
+        <!-- Frosted-Glass Next Button -->
+        <div class="nav-container">
+            <a href="page7.html" class="next-btn">Next ➔</a>
+        </div>
+    </div>
+
+</body>
+</html>
