@@ -79,7 +79,7 @@
         /* Start Game Button Overlay */
         .start-overlay {
             position: absolute;
-            bottom: 60px; /* Shifted lower as requested */
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 20;
@@ -164,10 +164,10 @@
             z-index: 5;
         }
 
-        /* Success Popup Modal (Shifted lower as requested) */
+        /* Success Popup Modal */
         .popup-modal {
             position: absolute;
-            top: 56%;
+            top: 58%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.8);
             width: 90%;
@@ -177,7 +177,7 @@
             -webkit-backdrop-filter: blur(12px);
             border: 2px solid rgba(74, 21, 27, 0.4);
             border-radius: 22px;
-            padding: 30px 18px 22px 18px;
+            padding: 45px 18px 22px 18px;
             text-align: center;
             z-index: 100;
             box-shadow: 0 12px 30px rgba(0,0,0,0.3);
@@ -194,20 +194,17 @@
             opacity: 1;
         }
 
-        /* Sticker inside popup */
+        /* Large Free-Floating Sticker (No Circle/Container) */
         .popup-sticker {
             position: absolute;
-            top: -45px;
+            top: -65px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
-            border-radius: 50%;
-            background: rgba(255, 245, 247, 0.9);
-            border: 2px solid rgba(74, 21, 27, 0.3);
-            padding: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.2));
+            z-index: 110;
         }
 
         .popup-text {
@@ -262,7 +259,7 @@
         <div class="bucket-liquid" id="bucketLiquid"></div>
     </div>
 
-    <!-- Success Modal Popup with Sticker12.jpg -->
+    <!-- Success Modal Popup with Large Free Sticker -->
     <div class="popup-modal" id="popupModal">
         <img src="./Sticker12.jpg" alt="Sticker" class="popup-sticker">
         <div class="popup-text">
@@ -359,7 +356,7 @@
         function updateProgress() {
             const percentage = Math.min(100, (collectedCount / targetCount) * 100);
             counterFill.style.width = percentage + '%';
-            bucketLiquid.style.height = percentage + '%'; // Inside bucket fill effect
+            bucketLiquid.style.height = percentage + '%';
 
             if (collectedCount >= targetCount && gameActive) {
                 gameActive = false;
