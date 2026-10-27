@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recharge Station - Page 11 🤎</title>
-    <!-- Google Font: Courier Prime for Vintage Typewriter Look -->
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Google Font: Clean Minimalist Sans-serif / Inter style -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -31,112 +31,95 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 15px;
-            font-family: 'Courier Prime', monospace;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
             position: relative;
         }
 
-        /* Main Big Card Box with Frosted Glass effect */
-        .card-box {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 340px;
-            background: rgba(255, 245, 247, 0.88);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(74, 21, 27, 0.3);
-            border-radius: 20px;
-            padding: 22px 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Top Battery & Percentage Container */
+        /* Top Battery & Percentage (Red area) */
         .battery-top-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        /* Realistic Medium Horizontal Battery */
         .battery-outer {
-            width: 55px;
-            height: 24px;
-            border: 2px solid #4a151b;
-            border-radius: 5px;
+            width: 65px;
+            height: 26px;
+            border: 2px solid #fff5f7;
+            border-radius: 6px;
             padding: 2px;
             position: relative;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(0, 0, 0, 0.2);
         }
 
-        /* Battery Tip */
         .battery-outer::after {
             content: '';
             position: absolute;
-            right: -5px;
+            right: -6px;
             top: 7px;
             width: 3px;
             height: 8px;
-            background: #4a151b;
+            background: #fff5f7;
             border-radius: 0 2px 2px 0;
         }
 
-        /* Battery Inner Fill */
         .battery-inner {
             height: 100%;
             width: 0%;
-            background: #d9534f; /* Realistic low/charging color */
+            background: #ff6b6b;
             border-radius: 3px;
             transition: width 0.6s ease;
         }
 
-        /* Percentage Text next to battery */
         .battery-perc {
-            font-size: 14px;
-            font-weight: bold;
-            color: #4a151b;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff5f7;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Subtitle Instructions */
+        /* Subtitle Text (Yellow area) */
         .instruction-text {
-            color: #4a151b;
-            font-size: 12px;
+            color: #fff5f7;
+            font-size: 14px;
             line-height: 1.5;
-            font-weight: 700;
-            margin-bottom: 18px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Buttons Grid Layout */
-        .buttons-grid {
+        /* Buttons Container */
+        .buttons-container {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
             width: 100%;
+            max-width: 340px;
             align-items: center;
         }
 
         .row-btns {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             width: 100%;
         }
 
-        /* Square-shaped cute buttons */
+        /* Green area buttons (Food & Water) */
         .square-btn {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: #4a151b;
-            border: 1px solid rgba(74, 21, 27, 0.35);
-            border-radius: 14px;
-            padding: 12px 10px;
-            font-family: 'Courier Prime', monospace;
-            font-size: 11px;
-            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 18px;
+            padding: 16px 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
@@ -144,27 +127,43 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 4px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            gap: 6px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
         }
 
         .square-btn:hover {
-            background: rgba(74, 21, 27, 0.12);
+            background: rgba(255, 255, 255, 0.95);
             transform: translateY(-2px);
         }
 
         .half-width {
             flex: 1;
-            height: 85px;
+            height: 110px;
         }
 
+        /* Purple area button (Love & Kisses) */
         .full-width {
             width: 100%;
             height: 75px;
             background: rgba(74, 21, 27, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: #fff5f7;
-            border-color: #4a151b;
-            opacity: 0.5;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 18px;
+            padding: 12px 18px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            opacity: 0.4;
             pointer-events: none; /* Locked until 50% charged */
         }
 
@@ -175,19 +174,19 @@
         }
 
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(74, 21, 27, 0.4); }
-            70% { box-shadow: 0 0 0 8px rgba(74, 21, 27, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(74, 21, 27, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
 
         /* Emoji Rain Styling */
         .falling-emoji {
             position: absolute;
             top: -30px;
-            font-size: 20px;
+            font-size: 24px;
             user-select: none;
             pointer-events: none;
-            z-index: 1;
+            z-index: 10;
             animation: fallAnimation linear forwards;
         }
 
@@ -205,41 +204,38 @@
 </head>
 <body>
 
-    <div class="card-box">
-        <!-- Top Horizontal Battery & Percentage -->
-        <div class="battery-top-wrapper">
-            <div class="battery-outer">
-                <div class="battery-inner" id="batteryInner"></div>
-            </div>
-            <div class="battery-perc" id="batteryPerc">0%</div>
+    <!-- Red Area: Battery & Percentage -->
+    <div class="battery-top-wrapper">
+        <div class="battery-outer">
+            <div class="battery-inner" id="batteryInner"></div>
         </div>
+        <div class="battery-perc" id="batteryPerc">0%</div>
+    </div>
 
-        <!-- Instructions -->
-        <div class="instruction-text">
-            Khutur baby is tired.<br>Click the buttons to get recharged.
-        </div>
+    <!-- Yellow Area: Minimal Clean Text -->
+    <div class="instruction-text">
+        Khutur baby is tired.<br>Click the buttons to get recharged.
+    </div>
 
-        <!-- Buttons Grid -->
-        <div class="buttons-grid">
-            <div class="row-btns">
-                <!-- Food Button -->
-                <button class="square-btn half-width" onclick="handleFoodClick()">
-                    <span style="font-size: 16px;">🍕</span>
-                    <span>Have some food baby 😋</span>
-                </button>
-                <!-- Water Button -->
-                <button class="square-btn half-width" onclick="handleWaterClick()">
-                    <span style="font-size: 16px;">🥤</span>
-                    <span>Have some water baby 🥤</span>
-                </button>
-            </div>
-            
-            <!-- Hugs & Kisses Final Button -->
-            <button class="square-btn full-width" id="loveBtn" onclick="handleLoveClick()">
-                <span style="font-size: 16px;">🫂💋</span>
-                <span>Get putur kisses, hugs and love to fully recharge</span>
+    <!-- Buttons Layout -->
+    <div class="buttons-container">
+        <!-- Green Area: Food & Water Buttons -->
+        <div class="row-btns">
+            <button class="square-btn half-width" onclick="handleFoodClick()">
+                <span style="font-size: 20px;">🍕</span>
+                <span>Have some food baby 😋</span>
+            </button>
+            <button class="square-btn half-width" onclick="handleWaterClick()">
+                <span style="font-size: 20px;">🥤</span>
+                <span>Have some water baby 🥤</span>
             </button>
         </div>
+        
+        <!-- Purple Area: Final Love Button -->
+        <button class="square-btn full-width" id="loveBtn" onclick="handleLoveClick()">
+            <span style="font-size: 20px;">🫂💋</span>
+            <span>Get putur kisses, hugs and love to fully recharge</span>
+        </button>
     </div>
 
     <script>
@@ -247,10 +243,9 @@
         let foodClickedOnce = false;
         let waterClickedOnce = false;
 
-        // Function to trigger Emoji Rain for 3 seconds
         function triggerEmojiRain(emojiArray) {
-            const duration = 3000; // 3 seconds
-            const intervalTime = 100; // spawn frequency
+            const duration = 3000;
+            const intervalTime = 100;
             const endTime = Date.now() + duration;
 
             const rainInterval = setInterval(() => {
@@ -262,20 +257,16 @@
                 const emojiSpan = document.createElement('div');
                 emojiSpan.classList.add('falling-emoji');
                 
-                // Pick random emoji from array
                 const randomEmoji = emojiArray[Math.floor(Math.random() * emojiArray.length)];
                 emojiSpan.innerText = randomEmoji;
 
-                // Random horizontal position
                 emojiSpan.style.left = Math.random() * window.innerWidth + 'px';
                 
-                // Random animation duration between 1.5s to 2.5s for realistic drop speed
                 const fallDuration = Math.random() * 1 + 1.5;
                 emojiSpan.style.animationDuration = fallDuration + 's';
 
                 document.body.appendChild(emojiSpan);
 
-                // Clean up element after falling
                 setTimeout(() => {
                     emojiSpan.remove();
                 }, fallDuration * 1000);
@@ -283,12 +274,9 @@
             }, intervalTime);
         }
 
-        // Food Button Logic
         function handleFoodClick() {
-            // Always trigger food rain
             triggerEmojiRain(['🍔', '🥪', '🍕', '🥯']);
 
-            // Charge only on first click (+25%)
             if (!foodClickedOnce) {
                 foodClickedOnce = true;
                 currentPercentage += 25;
@@ -296,12 +284,9 @@
             }
         }
 
-        // Water Button Logic
         function handleWaterClick() {
-            // Always trigger water rain
             triggerEmojiRain(['💧']);
 
-            // Charge only on first click (+25%)
             if (!waterClickedOnce) {
                 waterClickedOnce = true;
                 currentPercentage += 25;
@@ -309,7 +294,6 @@
             }
         }
 
-        // Update Battery Bar & Check Unlock Condition
         function updateBatteryDisplay() {
             const innerBar = document.getElementById('batteryInner');
             const percText = document.getElementById('batteryPerc');
@@ -318,21 +302,13 @@
             innerBar.style.width = currentPercentage + '%';
             percText.innerText = currentPercentage + '%';
 
-            // If both food and water are clicked, battery is 50%, unlock final love button
             if (currentPercentage >= 50) {
                 loveBtn.classList.add('unlocked');
             }
         }
 
-        // Final Love Button Click -> Go to page12.html
         function handleLoveClick() {
-            // Set battery to 100% visually before redirecting
-            document.getElementById('batteryInner').style.width = '100%';
-            document.getElementById('batteryPerc').innerText = '100%';
-            
-            setTimeout(() => {
-                window.location.href = 'page12.html';
-            }, 400);
+            window.location.href = 'page12.html';
         }
     </script>
 
