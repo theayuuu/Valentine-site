@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Collect Love - Page 12 🤎</title>
+    <!-- Google Font: Courier Prime -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            touch-action: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        body {
+            background-color: #8c2848;
+            background-image: url('./Bg1-page10.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Top HUD / Instruction Banner */
+        .hud-banner {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 340px;
+            background: rgba(255, 245, 247, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(74, 21, 27, 0.3);
+            border-radius: 18px;
+            padding: 14px 16px;
+            text-align: center;
+            color: #4a151b;
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .hud-title {
+            font-size: 11.5px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .counter-bar {
+            width: 100%;
+            height: 12px;
+            background: rgba(74, 21, 27, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(74, 21, 27, 0.3);
+        }
+
+        .counter-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff758c, #ff7eb3);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        /* Start Game Button Overlay */
+        .start-overlay {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            width: 90%;
+            max-width: 330px;
+            text-align: center;
+        }
+
+        .start-btn {
+            background: rgba(74, 21, 27, 0.9);
+            color: #fff5f7;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 11.5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .start-btn:hover {
+            background: #4a151b;
+            transform: translateY(-2px);
+        }
+
+        /* Movable Transparent Bucket */
+        .bucket {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 75px;
+            background: rgba(255, 255, 255, 0.28);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-top: none;
+            border-radius: 0 0 25px 25px;
+            z-index: 15;
+            display: none; /* Shown after clicking start button */
+            pointer-events: none;
+            box-shadow: inset 0 -10px 20px rgba(255, 182, 193, 0.4), 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .bucket::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            background: rgba(255, 245, 247, 0.4);
+        }
+
+        /* Falling Heart Elements */
+        .falling-item {
+            position: absolute;
+            top: -40px;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Success Popup Modal */
+        .popup-modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 85%;
+            max-width: 320px;
+            background: rgba(255, 245, 247, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(74, 21, 27, 0.4);
+            border-radius: 22px;
+            padding: 25px 18px;
+            text-align: center;
+            z-index: 100;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            display: none;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .popup-modal.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .popup-text {
+            color: #4a151b;
+            font-size: 12.5px;
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .pass-btn {
+            background: rgba(74, 21, 27, 0.9);
+            color: #fff5f7;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .pass-btn:hover {
+            background: #4a151b;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HUD Header -->
+    <div class="hud-banner">
+        <div class="hud-title" id="hudText">Move your bucket to collect putur love & kisses! 💖</div>
+        <div class="counter-bar">
+            <div class="counter-fill" id="counterFill"></div>
+        </div>
+    </div>
+
+    <!-- Start Button Overlay -->
+    <div class="start-overlay" id="startOverlay">
+        <button class="start-btn" onclick="startGame()">
+            Click to get bucket and collect putur love and kisses 🪣💖
+        </button>
+    </div>
+
+    <!-- Movable Transparent Bucket -->
+    <div class="bucket" id="bucket"></div>
+
+    <!-- Success Modal Popup -->
+    <div class="popup-modal" id="popupModal">
+        <div style="font-size: 30px; margin-bottom: 10px;">🎉💖</div>
+        <div class="popup-text">
+            You successfully collected the putur love by heart.. here's your pass to next page.
+        </div>
+        <a href="page13.html" class="pass-btn">Pass 🙈 for next page</a>
+    </div>
+
+    <script>
+        let collectedCount = 0;
+        const targetCount = 20;
+        let gameActive = false;
+        let spawnInterval = null;
+        let bucketX = window.innerWidth / 2;
+
+        const bucket = document.getElementById('bucket');
+        const startOverlay = document.getElementById('startOverlay');
+        const counterFill = document.getElementById('counterFill');
+        const popupModal = document.getElementById('popupModal');
+
+        // Bucket movement tracker
+        function moveBucket(xPos) {
+            if (!gameActive) return;
+            const minX = 60;
+            const maxX = window.innerWidth - 60;
+            bucketX = Math.max(minX, Math.min(xPos, maxX));
+            bucket.style.left = bucketX + 'px';
+        }
+
+        window.addEventListener('mousemove', (e) => moveBucket(e.clientX));
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) moveBucket(e.touches[0].clientX);
+        });
+
+        function startGame() {
+            startOverlay.style.display = 'none';
+            bucket.style.display = 'block';
+            gameActive = true;
+            
+            // Continuous Rain Spawn
+            spawnInterval = setInterval(spawnHeart, 350);
+        }
+
+        function spawnHeart() {
+            if (!gameActive) return;
+
+            const item = document.createElement('div');
+            item.classList.add('falling-item');
+
+            const emojis = ['❤️', '🩷', '💋', '💕'];
+            item.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+            const startX = Math.random() * (window.innerWidth - 40) + 20;
+            item.style.left = startX + 'px';
+
+            document.body.appendChild(item);
+
+            let posY = -40;
+            const speed = Math.random() * 2 + 2.5;
+
+            function anim() {
+                if (!gameActive) {
+                    item.remove();
+                    return;
+                }
+
+                posY += speed;
+                item.style.top = posY + 'px';
+
+                // Check collision with bucket bottom line
+                const bucketRect = bucket.getBoundingClientRect();
+                const itemRect = item.getBoundingClientRect();
+
+                if (
+                    itemRect.bottom >= bucketRect.top + 15 &&
+                    itemRect.top <= bucketRect.bottom &&
+                    itemRect.left >= bucketRect.left - 10 &&
+                    itemRect.right <= bucketRect.right + 10
+                ) {
+                    collectedCount++;
+                    updateProgress();
+                    item.remove();
+                    return;
+                }
+
+                if (posY < window.innerHeight + 50) {
+                    requestAnimationFrame(anim);
+                } else {
+                    item.remove();
+                }
+            }
+
+            requestAnimationFrame(anim);
+        }
+
+        function updateProgress() {
+            const percentage = Math.min(100, (collectedCount / targetCount) * 100);
+            counterFill.style.width = percentage + '%';
+
+            if (collectedCount >= targetCount && gameActive) {
+                gameActive = false;
+                clearInterval(spawnInterval);
+                bucket.style.display = 'none';
+
+                setTimeout(() => {
+                    popupModal.classList.add('active');
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
