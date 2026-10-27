@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge Station - Page 11 🤎</title>
+    <!-- Google Font: Courier Prime for Vintage Typewriter Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: #8c2848;
+            background-image: url('./Bg1-page10.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            font-family: 'Courier Prime', monospace;
+            position: relative;
+        }
+
+        /* Main Big Card Box with Frosted Glass effect */
+        .card-box {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 340px;
+            background: rgba(255, 245, 247, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(74, 21, 27, 0.3);
+            border-radius: 20px;
+            padding: 22px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Top Battery & Percentage Container */
+        .battery-top-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Realistic Medium Horizontal Battery */
+        .battery-outer {
+            width: 55px;
+            height: 24px;
+            border: 2px solid #4a151b;
+            border-radius: 5px;
+            padding: 2px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Battery Tip */
+        .battery-outer::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 7px;
+            width: 3px;
+            height: 8px;
+            background: #4a151b;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* Battery Inner Fill */
+        .battery-inner {
+            height: 100%;
+            width: 0%;
+            background: #d9534f; /* Realistic low/charging color */
+            border-radius: 3px;
+            transition: width 0.6s ease;
+        }
+
+        /* Percentage Text next to battery */
+        .battery-perc {
+            font-size: 14px;
+            font-weight: bold;
+            color: #4a151b;
+        }
+
+        /* Subtitle Instructions */
+        .instruction-text {
+            color: #4a151b;
+            font-size: 12px;
+            line-height: 1.5;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        /* Buttons Grid Layout */
+        .buttons-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .row-btns {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        /* Square-shaped cute buttons */
+        .square-btn {
+            background: rgba(255, 255, 255, 0.75);
+            color: #4a151b;
+            border: 1px solid rgba(74, 21, 27, 0.35);
+            border-radius: 14px;
+            padding: 12px 10px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+        .square-btn:hover {
+            background: rgba(74, 21, 27, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .half-width {
+            flex: 1;
+            height: 85px;
+        }
+
+        .full-width {
+            width: 100%;
+            height: 75px;
+            background: rgba(74, 21, 27, 0.85);
+            color: #fff5f7;
+            border-color: #4a151b;
+            opacity: 0.5;
+            pointer-events: none; /* Locked until 50% charged */
+        }
+
+        .full-width.unlocked {
+            opacity: 1;
+            pointer-events: auto;
+            animation: pulseGlow 1.5s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(74, 21, 27, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(74, 21, 27, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 21, 27, 0); }
+        }
+
+        /* Emoji Rain Styling */
+        .falling-emoji {
+            position: absolute;
+            top: -30px;
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            animation: fallAnimation linear forwards;
+        }
+
+        @keyframes fallAnimation {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-box">
+        <!-- Top Horizontal Battery & Percentage -->
+        <div class="battery-top-wrapper">
+            <div class="battery-outer">
+                <div class="battery-inner" id="batteryInner"></div>
+            </div>
+            <div class="battery-perc" id="batteryPerc">0%</div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instruction-text">
+            Khutur baby is tired.<br>Click the buttons to get recharged.
+        </div>
+
+        <!-- Buttons Grid -->
+        <div class="buttons-grid">
+            <div class="row-btns">
+                <!-- Food Button -->
+                <button class="square-btn half-width" onclick="handleFoodClick()">
+                    <span style="font-size: 16px;">🍕</span>
+                    <span>Have some food baby 😋</span>
+                </button>
+                <!-- Water Button -->
+                <button class="square-btn half-width" onclick="handleWaterClick()">
+                    <span style="font-size: 16px;">🥤</span>
+                    <span>Have some water baby 🥤</span>
+                </button>
+            </div>
+            
+            <!-- Hugs & Kisses Final Button -->
+            <button class="square-btn full-width" id="loveBtn" onclick="handleLoveClick()">
+                <span style="font-size: 16px;">🫂💋</span>
+                <span>Get putur kisses, hugs and love to fully recharge</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentPercentage = 0;
+        let foodClickedOnce = false;
+        let waterClickedOnce = false;
+
+        // Function to trigger Emoji Rain for 3 seconds
+        function triggerEmojiRain(emojiArray) {
+            const duration = 3000; // 3 seconds
+            const intervalTime = 100; // spawn frequency
+            const endTime = Date.now() + duration;
+
+            const rainInterval = setInterval(() => {
+                if (Date.now() > endTime) {
+                    clearInterval(rainInterval);
+                    return;
+                }
+
+                const emojiSpan = document.createElement('div');
+                emojiSpan.classList.add('falling-emoji');
+                
+                // Pick random emoji from array
+                const randomEmoji = emojiArray[Math.floor(Math.random() * emojiArray.length)];
+                emojiSpan.innerText = randomEmoji;
+
+                // Random horizontal position
+                emojiSpan.style.left = Math.random() * window.innerWidth + 'px';
+                
+                // Random animation duration between 1.5s to 2.5s for realistic drop speed
+                const fallDuration = Math.random() * 1 + 1.5;
+                emojiSpan.style.animationDuration = fallDuration + 's';
+
+                document.body.appendChild(emojiSpan);
+
+                // Clean up element after falling
+                setTimeout(() => {
+                    emojiSpan.remove();
+                }, fallDuration * 1000);
+
+            }, intervalTime);
+        }
+
+        // Food Button Logic
+        function handleFoodClick() {
+            // Always trigger food rain
+            triggerEmojiRain(['🍔', '🥪', '🍕', '🥯']);
+
+            // Charge only on first click (+25%)
+            if (!foodClickedOnce) {
+                foodClickedOnce = true;
+                currentPercentage += 25;
+                updateBatteryDisplay();
+            }
+        }
+
+        // Water Button Logic
+        function handleWaterClick() {
+            // Always trigger water rain
+            triggerEmojiRain(['💧']);
+
+            // Charge only on first click (+25%)
+            if (!waterClickedOnce) {
+                waterClickedOnce = true;
+                currentPercentage += 25;
+                updateBatteryDisplay();
+            }
+        }
+
+        // Update Battery Bar & Check Unlock Condition
+        function updateBatteryDisplay() {
+            const innerBar = document.getElementById('batteryInner');
+            const percText = document.getElementById('batteryPerc');
+            const loveBtn = document.getElementById('loveBtn');
+
+            innerBar.style.width = currentPercentage + '%';
+            percText.innerText = currentPercentage + '%';
+
+            // If both food and water are clicked, battery is 50%, unlock final love button
+            if (currentPercentage >= 50) {
+                loveBtn.classList.add('unlocked');
+            }
+        }
+
+        // Final Love Button Click -> Go to page12.html
+        function handleLoveClick() {
+            // Set battery to 100% visually before redirecting
+            document.getElementById('batteryInner').style.width = '100%';
+            document.getElementById('batteryPerc').innerText = '100%';
+            
+            setTimeout(() => {
+                window.location.href = 'page12.html';
+            }, 400);
+        }
+    </script>
+
+</body>
+</html>
