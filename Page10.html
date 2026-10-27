@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Package - Page 10 🤎</title>
+    <!-- Google Font: Courier Prime for Vintage Typewriter Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: #8c2848;
+            background-image: url('./Bg1-page10.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        /* Main Big Card Box with Frosted Glass effect */
+        .card-box {
+            position: relative;
+            width: 100%;
+            max-width: 340px;
+            background: rgba(255, 245, 247, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(74, 21, 27, 0.3);
+            border-radius: 20px;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sticker Image Styling */
+        .sticker-img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Question Text */
+        .question-text {
+            color: #4a151b; /* Rich Brown Ink */
+            font-size: 13.5px;
+            line-height: 1.6;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        /* Button Container */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            align-items: center;
+            position: relative;
+            min-height: 90px;
+        }
+
+        /* Yes Button Styling */
+        .yes-btn {
+            background: rgba(74, 21, 27, 0.85);
+            color: #fff5f7;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .yes-btn:hover {
+            background: #4a151b;
+            transform: translateY(-2px);
+        }
+
+        /* No Thanks Button (Dodge Effect) */
+        .no-btn {
+            background: rgba(255, 255, 255, 0.6);
+            color: #4a151b;
+            border: 1px solid rgba(74, 21, 27, 0.4);
+            padding: 9px 18px;
+            border-radius: 20px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-box">
+        <!-- Cute Sticker from GitHub repo (Sticker4.jpg) -->
+        <img src="./Sticker4.jpg" alt="Cute Sticker" class="sticker-img">
+
+        <!-- Question Text -->
+        <div class="question-text">
+            I guess my khutur baby is tired after reading my bigg bigg letter.. ? Henaa babuu?
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="btn-container" id="btnContainer">
+            <a href="page11.html" class="yes-btn">Haan putur baby main toh thak gaya, I need you. 🤎</a>
+            <button class="no-btn" id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">No thanks.</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const container = document.getElementById('btnContainer');
+            
+            // Random positioning inside container bounds
+            const maxX = container.clientWidth - btn.clientWidth;
+            const maxY = 60; // vertical range limit
+            
+            const randomX = Math.floor(Math.random() * Math.max(maxX, 50)) - (maxX / 2);
+            const randomY = (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * maxY);
+            
+            btn.style.position = 'relative';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+    </script>
+
+</body>
+</html>
