@@ -46,20 +46,6 @@
             box-shadow: 0 12px 30px rgba(0,0,0,0.3);
             animation: popUpModal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             border: 2px solid rgba(255, 255, 255, 0.4);
-        }
-
-        @keyframes popUpModal {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Hidden Layer Content underneath scratch card */
-        .card-secret-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background: rgba(255, 245, 247, 0.92);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -69,7 +55,11 @@
             align-items: center;
             padding: 20px;
             text-align: center;
-            z-index: 1;
+        }
+
+        @keyframes popUpModal {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .secret-text {
@@ -99,20 +89,32 @@
             transform: translateY(-2px);
         }
 
-        /* Scratch Canvas Layer on top */
-        #scratchCanvas {
+        /* Interactive Scratch Layer on top */
+        .scratch-overlay-layer {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 2;
+            background: #b56576;
+            color: #fff5f7;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            touch-action: none;
-            border-radius: 18px;
+            z-index: 10;
+            transition: opacity 0.5s ease;
+            user-select: none;
         }
 
-        /* Final Grand Proposal Question Section (Hidden initially) */
+        .scratch-overlay-layer.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Final Grand Proposal Container */
         .proposal-container {
             position: absolute;
             width: 90%;
@@ -199,12 +201,11 @@
 
     <!-- Scratch Card Box -->
     <div class="scratch-card-wrapper" id="scratchCardWrapper">
+        <div class="scratch-overlay-layer" id="scratchLayer" onclick="scratchCardAway()">Scratch</div>
         <div class="card-secret-content">
-            <div style="font-size: 35px; margin-bottom: 10px;">✨💌✨</div>
-            <div class="secret-text">Scratch to reveal a secret surprise just for you, my love! 🤎</div>
-            <button class="inner-click-btn" onclick="revealProposal()">Click 🙈</button>
+            <div class="secret-text">Scratch to reveal a secret surprise just for you, my love</div>
+            <button class="inner-click-btn" onclick="revealProposal()">Click</button>
         </div>
-        <canvas id="scratchCanvas"></canvas>
     </div>
 
     <!-- Final Proposal Container -->
@@ -220,43 +221,11 @@
     </div>
 
     <script>
-        // Scratch Card Setup
-        const canvas = document.getElementById('scratchCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = 300;
-        canvas.height = 300;
-
-        // Draw metallic/vintage scratch cover
-        ctx.fillStyle = '#b56576';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        ctx.fillStyle = '#fff5f7';
-        ctx.font = 'bold 14px Poppins, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('✨ Scratch Here ✨', canvas.width / 2, canvas.height / 2);
-
-        let isDrawing = false;
-
-        function scratch(e) {
-            if (!isDrawing) return;
-            const rect = canvas.getBoundingClientRect();
-            const x = (e.clientX || e.touches[0].clientX) - rect.left;
-            const y = (e.clientY || e.touches[0].clientY) - rect.top;
-
-            ctx.globalCompositeOperation = 'destination-out';
-            ctx.beginPath();
-            ctx.arc(x, y, 25, 0, Math.PI * 2, false);
-            ctx.fill();
+        // Scratch action removes overlay
+        function scratchCardAway() {
+            const layer = document.getElementById('scratchLayer');
+            layer.classList.add('hidden');
         }
-
-        canvas.addEventListener('mousedown', () => isDrawing = true);
-        canvas.addEventListener('mousemove', scratch);
-        window.addEventListener('mouseup', () => isDrawing = false);
-
-        canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); });
-        canvas.addEventListener('touchmove', scratch);
-        window.addEventListener('touchend', () => isDrawing = false);
 
         // Transition from Scratch Card to Proposal Question
         function revealProposal() {
